@@ -1,11 +1,17 @@
 import 'package:coffee_shops_santuy/page/coffee_mix/cf_detail_screens.dart';
+import 'package:firebase_auth/firebase_auth.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:coffee_shops_santuy/util/color_util.dart';
 import 'package:flutter/material.dart';
 
-class CfHomePage extends StatelessWidget {
-  CfHomePage({super.key});
+class CfHomePage extends StatefulWidget {
+  const CfHomePage({super.key});
 
+  @override
+  State<CfHomePage> createState() => _CfHomePageState();
+}
+
+class _CfHomePageState extends State<CfHomePage> {
   List item = [
     {
       "id": "1",
@@ -23,6 +29,14 @@ class CfHomePage extends StatelessWidget {
       "image": "assets/cfmix/image/product/latte.png"
     },
   ];
+  String? name;
+
+  @override
+  void initState() {
+    // TODO: implement initState
+    super.initState();
+    name = FirebaseAuth.instance.currentUser!.displayName;
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -41,7 +55,7 @@ class CfHomePage extends StatelessWidget {
                     style: GoogleFonts.montserrat(
                       fontSize: 36.0,
                     )),
-                Text("Rahma Shafiyah",
+                Text("$name",
                     style: GoogleFonts.montserrat(
                       fontSize: 36.0,
                     )),

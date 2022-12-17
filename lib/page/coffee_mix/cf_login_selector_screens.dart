@@ -1,8 +1,24 @@
 import 'package:coffee_shops_santuy/util/color_util.dart';
 import 'package:flutter/material.dart';
 
-class CfLoginSelectorScreens extends StatelessWidget {
+import '../../services/services_google.dart';
+
+class CfLoginSelectorScreens extends StatefulWidget {
   const CfLoginSelectorScreens({super.key});
+
+  @override
+  State<CfLoginSelectorScreens> createState() => _CfLoginSelectorScreensState();
+}
+
+class _CfLoginSelectorScreensState extends State<CfLoginSelectorScreens> {
+  doLoginGoogle() async {
+    try {
+      await ServicesGoogleCF.signInWithGoogle();
+      Navigator.pushNamed(context, "/navigator");
+    } catch (e) {
+      print("Detail Error: $e");
+    }
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -90,7 +106,7 @@ class CfLoginSelectorScreens extends StatelessWidget {
                   backgroundColor: Colors.white,
                   shape: const RoundedRectangleBorder()),
               onPressed: () {
-                Navigator.pushNamed(context, "/register");
+                doLoginGoogle();
               },
               child: Row(
                 mainAxisAlignment: MainAxisAlignment.center,

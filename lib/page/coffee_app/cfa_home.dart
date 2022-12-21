@@ -1,6 +1,8 @@
+import 'package:coffee_shops_santuy/bloc/checkout/checkout_bloc.dart';
+import 'package:coffee_shops_santuy/page/coffee_app/cfa_cart.dart';
 import 'package:coffee_shops_santuy/page/coffee_app/cfa_product_page.dart';
 import 'package:google_fonts/google_fonts.dart';
-import 'package:coffee_shops_santuy/cubit/navmenu_cubit.dart';
+import 'package:coffee_shops_santuy/bloc/navmenu_cubit.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
@@ -24,6 +26,7 @@ class _CfaHomePageState extends State<CfaHomePage>
   @override
   Widget build(BuildContext context) {
     NavmenuCubit status = context.read<NavmenuCubit>();
+    CheckoutBloc checkoutB = context.read<CheckoutBloc>();
 
     return Scaffold(
       body: ListView(
@@ -54,6 +57,49 @@ class _CfaHomePageState extends State<CfaHomePage>
                             )),
                       ],
                     ),
+                  ),
+                  Stack(
+                    children: [
+                      BlocBuilder<CheckoutBloc, CheckoutState>(
+                        bloc: checkoutB,
+                        builder: (context, state) {
+                          if (state.listCheckout.isEmpty) {
+                            return Container();
+                          }
+                          return Positioned(
+                            right: 0,
+                            top: 0,
+                            child: CircleAvatar(
+                              backgroundColor: Colors.red,
+                              radius: 10,
+                              child: Text(
+                                "${state.listCheckout.length}",
+                                style: const TextStyle(
+                                  fontSize: 10.0,
+                                  fontWeight: FontWeight.bold,
+                                ),
+                              ),
+                            ),
+                          );
+                        },
+                      ),
+                      Align(
+                        alignment: Alignment.center,
+                        child: IconButton(
+                          onPressed: () {
+                            Navigator.push(
+                              context,
+                              MaterialPageRoute(
+                                  builder: (context) => const CfaCard()),
+                            );
+                          },
+                          icon: const Icon(
+                            Icons.shopping_cart_outlined,
+                            size: 24.0,
+                          ),
+                        ),
+                      ),
+                    ],
                   ),
                   BlocBuilder<NavmenuCubit, bool>(
                     bloc: status,

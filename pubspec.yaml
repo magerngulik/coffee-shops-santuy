@@ -31,7 +31,10 @@ environment:
 dependencies:
   bloc: ^8.1.0
   cloud_firestore: ^4.2.0
+  cloud_firestore_platform_interface: ^5.9.2
   cupertino_icons: ^1.0.2
+  dio: ^4.0.6
+  equatable: ^2.0.5
   firebase_auth: ^4.2.1
   firebase_core: ^2.4.0
   firebase_messaging: ^14.0.1
@@ -40,12 +43,13 @@ dependencies:
   flutter_bloc: ^8.1.1
   flutter_screenutil: ^5.6.0
   font_awesome_flutter: ^10.3.0
-  freezed_annotation: ^2.1.0
   google_fonts: ^3.0.1
   google_sign_in: ^5.4.2
+  image_picker: ^0.8.6
   intl: ^0.17.0
   json_annotation: ^4.7.0
   lottie: ^2.1.0
+  path_provider: ^2.0.11
 
 dev_dependencies:
   flutter_lints: ^2.0.0

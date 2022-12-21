@@ -1,6 +1,7 @@
 import 'package:coffee_shops_santuy/core.dart';
-import 'package:coffee_shops_santuy/cubit/navmenu_cubit.dart';
+import 'package:coffee_shops_santuy/bloc/navmenu_cubit.dart';
 import 'package:coffee_shops_santuy/page/coffee_app/cfa_home.dart';
+import 'package:coffee_shops_santuy/page/coffee_app/cfa_product_management.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
@@ -20,7 +21,7 @@ class _CfaNavigatorState extends State<CfaNavigator> {
     {"id": 3, "icon": FontAwesomeIcons.file},
   ];
 
-  int selected = 1;
+  int selected = 0;
 
   @override
   Widget build(BuildContext context) {
@@ -112,7 +113,9 @@ class _CfaNavigatorState extends State<CfaNavigator> {
                         ),
                         const Spacer(),
                         IconButton(
-                          onPressed: () {},
+                          onPressed: () {
+                            status.activator();
+                          },
                           icon: FaIcon(
                             FontAwesomeIcons.gear,
                             size: 24.0.h,
@@ -123,8 +126,43 @@ class _CfaNavigatorState extends State<CfaNavigator> {
                           height: 10.0,
                         ),
                         IconButton(
-                          onPressed: () {
-                            status.activator();
+                          onPressed: () async {
+                            await showDialog<void>(
+                              context: context,
+                              barrierDismissible: true,
+                              builder: (BuildContext context) {
+                                return AlertDialog(
+                                  title: const Text('Keluar'),
+                                  content: SingleChildScrollView(
+                                    child: ListBody(
+                                      children: const <Widget>[
+                                        Text('Apakah anda yakin ingin keluar?'),
+                                      ],
+                                    ),
+                                  ),
+                                  actions: <Widget>[
+                                    ElevatedButton(
+                                      style: ElevatedButton.styleFrom(
+                                        backgroundColor: Colors.orange,
+                                      ),
+                                      onPressed: () {
+                                        Navigator.pop(context);
+                                      },
+                                      child: const Text("Tidak"),
+                                    ),
+                                    ElevatedButton(
+                                      style: ElevatedButton.styleFrom(
+                                        backgroundColor: Colors.grey,
+                                      ),
+                                      onPressed: () {
+                                        Navigator.pop(context);
+                                      },
+                                      child: const Text("Iya"),
+                                    ),
+                                  ],
+                                );
+                              },
+                            );
                           },
                           icon: FaIcon(
                             FontAwesomeIcons.rightFromBracket,
@@ -148,9 +186,7 @@ class _CfaNavigatorState extends State<CfaNavigator> {
                       index: selected,
                       children: [
                         const CfaHomePage(),
-                        Container(
-                          color: Colors.red[100],
-                        ),
+                        const CfaProductManagement(),
                         Container(
                           color: Colors.purple[100],
                         ),

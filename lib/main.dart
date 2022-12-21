@@ -1,5 +1,8 @@
-import 'package:coffee_shops_santuy/cubit/navmenu_cubit.dart';
+import 'package:coffee_shops_santuy/bloc/checkout/checkout_bloc.dart';
+import 'package:coffee_shops_santuy/bloc/navmenu_cubit.dart';
+import 'package:coffee_shops_santuy/bloc/product/product_bloc.dart';
 import 'package:coffee_shops_santuy/firebase_options.dart';
+import 'package:coffee_shops_santuy/general_observer.dart';
 import 'package:coffee_shops_santuy/page/coffee_app/cfa_navigator.dart';
 import 'package:coffee_shops_santuy/page/coffee_mix/cf_category_screens.dart';
 import 'package:coffee_shops_santuy/page/coffee_mix/cf_detail_screens.dart';
@@ -12,6 +15,7 @@ import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'core.dart';
 
 void main() async {
+  Bloc.observer = MyBlocObserver();
   runApp(const MyApp());
   await Firebase.initializeApp(
     options: DefaultFirebaseOptions.currentPlatform,
@@ -33,6 +37,12 @@ class MyApp extends StatelessWidget {
               BlocProvider(
                 create: (context) => NavmenuCubit(),
               ),
+              BlocProvider(
+                create: (context) => ProductBloc(),
+              ),
+              BlocProvider(
+                create: (context) => CheckoutBloc(),
+              )
             ],
             child: MaterialApp(
               title: 'Flutter Demo',

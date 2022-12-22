@@ -9,7 +9,9 @@ import 'package:google_fonts/google_fonts.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
 class CfaAddProduct extends StatefulWidget {
-  const CfaAddProduct({Key? key}) : super(key: key);
+  ProductModel? item;
+
+  CfaAddProduct({this.item, Key? key}) : super(key: key);
 
   @override
   State<CfaAddProduct> createState() => _CfaAddProductState();
@@ -31,6 +33,17 @@ class _CfaAddProductState extends State<CfaAddProduct> {
   final _formKey = GlobalKey<FormState>();
   List<String> list = <String>['Coffee', 'Tea', 'Snack'];
   String? imgUrl;
+
+  @override
+  void initState() {
+    super.initState();
+    if (widget.item != null) {
+      nameC.text = widget.item!.name!;
+      priceC.text = widget.item!.price!;
+      descriptionC.text = widget.item!.descripton!;
+      imgUrl = widget.item!.imageUrl;
+    }
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -64,6 +77,7 @@ class _CfaAddProductState extends State<CfaAddProduct> {
                   height: 20.0,
                 ),
                 QimagePicker(
+                    value: imgUrl,
                     onChanged: (value) {
                       imgUrl = value;
                     },
@@ -197,6 +211,7 @@ class _CfaAddProductState extends State<CfaAddProduct> {
                           );
                           ScaffoldMessenger.of(context).showSnackBar(snackBar);
                           return;
+                          // imgUrl = "https://i.ibb.co/S32HNjD/no-image.jpg";
                         }
 
                         productB.add(

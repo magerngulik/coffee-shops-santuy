@@ -88,8 +88,7 @@ class _CfaProductManagementState extends State<CfaProductManagement>
                 onPressed: () {
                   Navigator.push(
                     context,
-                    MaterialPageRoute(
-                        builder: (context) => const CfaAddProduct()),
+                    MaterialPageRoute(builder: (context) => CfaAddProduct()),
                   );
                 },
               ),
@@ -139,7 +138,7 @@ class _CfaProductManagementState extends State<CfaProductManagement>
                           itemBuilder: (BuildContext context, int index) {
                             ProductModel item = state.listProductMenu[index];
                             return ProductCartProses(
-                              cake: ProductModel(
+                              item: ProductModel(
                                   id: item.id,
                                   name: item.name,
                                   price: item.price,

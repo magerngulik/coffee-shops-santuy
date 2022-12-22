@@ -1,5 +1,4 @@
 import 'dart:math';
-
 import 'package:coffee_shops_santuy/bloc/checkout/checkout_bloc.dart';
 import 'package:coffee_shops_santuy/services/checkout_model.dart';
 import 'package:coffee_shops_santuy/services/product_model.dart';
@@ -90,6 +89,16 @@ class _ProductCartState extends State<ProductCart> {
               const SizedBox(
                 height: 5.0,
               ),
+              Text(
+                "Rp. ${widget.cake!.price}" ?? "Rp. 0",
+                style: const TextStyle(
+                  fontSize: 15.0,
+                  fontWeight: FontWeight.bold,
+                ),
+              ),
+              const SizedBox(
+                height: 5.0,
+              ),
               Padding(
                 padding: const EdgeInsets.symmetric(horizontal: 10.0),
                 child: Text(
@@ -115,10 +124,15 @@ class _ProductCartState extends State<ProductCart> {
                     backgroundColor: Colors.orange,
                   ),
                   onPressed: () {
-                    checkoutB.add(AddCheckoutEvent(CheckoutModel(
-                        id: Random().nextInt(990),
-                        date: DateTime.now(),
-                        itemChekout: [widget.cake!])));
+                    checkoutB.add(
+                      AddCheckoutEvent(
+                        CheckoutModel(
+                            id: Random().nextInt(990),
+                            date: DateTime.now(),
+                            itemChekout: widget.cake!,
+                            jumlah: 1),
+                      ),
+                    );
                   },
                 ),
               ),

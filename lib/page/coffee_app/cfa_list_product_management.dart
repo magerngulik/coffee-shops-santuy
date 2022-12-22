@@ -1,4 +1,4 @@
-import 'package:coffee_shops_santuy/core.dart';
+import 'package:flutter/material.dart';
 
 class CfaListProductManagement extends StatefulWidget {
   const CfaListProductManagement({super.key});

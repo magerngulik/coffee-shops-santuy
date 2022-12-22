@@ -4,6 +4,7 @@ import 'package:coffee_shops_santuy/bloc/checkout/checkout_bloc.dart';
 import 'package:coffee_shops_santuy/services/checkout_model.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:lottie/lottie.dart';
 
 class CfaCard extends StatefulWidget {
   const CfaCard({Key? key}) : super(key: key);
@@ -17,34 +18,66 @@ class _CfaCardState extends State<CfaCard> {
   Widget build(BuildContext context) {
     CheckoutBloc checkoutB = context.read<CheckoutBloc>();
     return Scaffold(
+        backgroundColor: Colors.white,
         appBar: AppBar(
+          backgroundColor: Colors.orange,
           title: const Text("Cart Product"),
           actions: const [],
         ),
         body: ListView(
+          padding: const EdgeInsets.symmetric(horizontal: 20.0),
           children: [
+            const SizedBox(
+              height: 10.0,
+            ),
             Column(
               children: [
                 BlocBuilder<CheckoutBloc, CheckoutState>(
                   bloc: checkoutB,
                   builder: (context, state) {
+                    if (state.listCheckout.isEmpty) {
+                      return SizedBox(
+                        height: MediaQuery.of(context).size.height - 300.0,
+                        child: Center(
+                          child: Column(
+                            crossAxisAlignment: CrossAxisAlignment.center,
+                            mainAxisAlignment: MainAxisAlignment.center,
+                            children: [
+                              Lottie.asset(
+                                  "assets/lottie/no_data_checout.json"),
+                              const SizedBox(
+                                height: 10.0,
+                              ),
+                              const Text(
+                                "Belum ada data",
+                                style: TextStyle(
+                                  fontSize: 20.0,
+                                  fontWeight: FontWeight.bold,
+                                ),
+                              ),
+                            ],
+                          ),
+                        ),
+                      );
+                    }
+
                     return ListView.builder(
                       itemCount: state.listCheckout.length,
                       shrinkWrap: true,
                       itemBuilder: (context, index) {
                         CheckoutModel items = state.listCheckout[index];
                         return Card(
+                          margin: const EdgeInsets.symmetric(vertical: 10.0),
                           child: ListTile(
                             leading: CircleAvatar(
                               backgroundColor: Colors.grey[200],
                               backgroundImage: NetworkImage(
-                                "${items.itemChekout?.first.imageUrl}" ??
+                                "${items.itemChekout!.imageUrl}" ??
                                     "https://i.ibb.co/S32HNjD/no-image.jpg",
                               ),
                             ),
-                            title: Text("${items.itemChekout?.first.name}"),
-                            subtitle:
-                                Text("Rp. ${items.itemChekout?.first.price}"),
+                            title: Text("${items.itemChekout!.name}"),
+                            subtitle: Text("Rp. ${items.itemChekout!.price}"),
                             trailing: SizedBox(
                               width: 120.0,
                               child: Row(
@@ -55,7 +88,10 @@ class _CfaCardState extends State<CfaCard> {
                                     radius: 12.0,
                                     child: Center(
                                       child: IconButton(
-                                        onPressed: () {},
+                                        onPressed: () {
+                                          checkoutB.add(removeQuantityEvent(
+                                              checkout: items));
+                                        },
                                         icon: const Icon(
                                           Icons.remove,
                                           color: Colors.white,
@@ -64,11 +100,11 @@ class _CfaCardState extends State<CfaCard> {
                                       ),
                                     ),
                                   ),
-                                  const Padding(
-                                    padding: EdgeInsets.all(8.0),
+                                  Padding(
+                                    padding: const EdgeInsets.all(8.0),
                                     child: Text(
-                                      "1",
-                                      style: TextStyle(
+                                      "${items.jumlah}",
+                                      style: const TextStyle(
                                         fontSize: 14,
                                       ),
                                     ),
@@ -78,7 +114,10 @@ class _CfaCardState extends State<CfaCard> {
                                     radius: 12.0,
                                     child: Center(
                                       child: IconButton(
-                                        onPressed: () {},
+                                        onPressed: () {
+                                          checkoutB.add(AddQuantityEvent(
+                                              checkout: items));
+                                        },
                                         icon: const Icon(
                                           Icons.add,
                                           color: Colors.white,

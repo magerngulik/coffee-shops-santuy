@@ -3,16 +3,17 @@ import 'package:coffee_shops_santuy/bloc/navmenu_cubit.dart';
 import 'package:coffee_shops_santuy/bloc/product/product_bloc.dart';
 import 'package:coffee_shops_santuy/firebase_options.dart';
 import 'package:coffee_shops_santuy/general_observer.dart';
-import 'package:coffee_shops_santuy/page/coffee_app/cfa_navigator.dart';
+import 'package:coffee_shops_santuy/page/404/not_fount_routes.dart';
 import 'package:coffee_shops_santuy/page/coffee_mix/cf_category_screens.dart';
 import 'package:coffee_shops_santuy/page/coffee_mix/cf_detail_screens.dart';
 import 'package:coffee_shops_santuy/page/coffee_mix/cf_home_screens.dart';
+import 'package:coffee_shops_santuy/page/coffee_mix/cf_login_screens..dart';
 import 'package:coffee_shops_santuy/page/coffee_mix/cf_navbar.dart';
+import 'package:coffee_shops_santuy/page/coffee_mix/cf_register_screens.dart';
 import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
-
-import 'core.dart';
+import 'package:flutter/material.dart';
 
 void main() async {
   Bloc.observer = MyBlocObserver();
@@ -51,7 +52,7 @@ class MyApp extends StatelessWidget {
               ),
               initialRoute: "/",
               routes: {
-                '/': (context) => const CfaNavigator(),
+                '/': (context) => const CfLoginScreens(),
                 '/register': (context) => const CfRegisterScreens(),
                 '/login': (context) => const CfLoginScreens(),
                 '/navigator': (context) => const CfNavigator(),

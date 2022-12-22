@@ -1,7 +1,8 @@
 import 'package:coffee_shops_santuy/bloc/product/product_bloc.dart';
-import 'package:coffee_shops_santuy/core.dart';
 import 'package:coffee_shops_santuy/page/coffee_app/widget/cfa_product_cart.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:flutter/material.dart';
+import 'package:lottie/lottie.dart';
 
 class CfaProductPage extends StatefulWidget {
   const CfaProductPage({super.key});
@@ -24,6 +25,27 @@ class _CfaProductPageState extends State<CfaProductPage> {
         child: BlocBuilder<ProductBloc, ProductState>(
           bloc: productB,
           builder: (context, state) {
+            if (state.listProductMenu.isEmpty) {
+              return SizedBox(
+                height: MediaQuery.of(context).size.height - 300.0,
+                child: Center(
+                  child: Column(
+                    crossAxisAlignment: CrossAxisAlignment.center,
+                    mainAxisAlignment: MainAxisAlignment.center,
+                    children: [
+                      Lottie.asset("assets/lottie/foot_order.json"),
+                      const Text(
+                        "Belum ada data",
+                        style: TextStyle(
+                          fontSize: 20.0,
+                          fontWeight: FontWeight.bold,
+                        ),
+                      ),
+                    ],
+                  ),
+                ),
+              );
+            }
             return GridView.builder(
               gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
                 crossAxisCount: 2,

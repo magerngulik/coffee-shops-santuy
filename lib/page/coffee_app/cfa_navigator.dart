@@ -1,10 +1,10 @@
-import 'package:coffee_shops_santuy/core.dart';
 import 'package:coffee_shops_santuy/bloc/navmenu_cubit.dart';
 import 'package:coffee_shops_santuy/page/coffee_app/cfa_home.dart';
 import 'package:coffee_shops_santuy/page/coffee_app/cfa_product_management.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:flutter/material.dart';
 
 class CfaNavigator extends StatefulWidget {
   const CfaNavigator({super.key});

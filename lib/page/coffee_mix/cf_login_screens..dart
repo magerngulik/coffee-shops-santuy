@@ -1,3 +1,4 @@
+import 'package:coffee_shops_santuy/page/coffee_app/cfa_navigator.dart';
 import 'package:coffee_shops_santuy/services/services_google.dart';
 import 'package:coffee_shops_santuy/util/color_util.dart';
 import 'package:flutter/material.dart';
@@ -13,7 +14,11 @@ class _CfLoginScreensState extends State<CfLoginScreens> {
   doLoginGoogle() async {
     try {
       await ServicesGoogleCF.signInWithGoogle();
-      Navigator.pushNamed(context, "/navigator");
+      // Navigator.pushNamed(context, "/navigator");
+      Navigator.push(
+        context,
+        MaterialPageRoute(builder: (context) => const CfaNavigator()),
+      );
     } catch (e) {
       print("Detail Error: $e");
     }

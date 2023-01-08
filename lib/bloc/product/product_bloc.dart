@@ -19,7 +19,6 @@ class ProductBloc extends HydratedBloc<ProductEvent, ProductState> {
     on<AddQtyEvent>(_onAddQty);
     on<RemoveQtyEvent>(_onRemoveQty);
     on<DeleteCheckoutEvent>(_onDeleteCheckout);
-    on<CheckoutEvent>(_onCheckout);
   }
 
   FutureOr<void> _onAdd(AddProductEvent event, Emitter<ProductState> emit) {
@@ -37,22 +36,28 @@ class ProductBloc extends HydratedBloc<ProductEvent, ProductState> {
   FutureOr<void> _onUpdate(
       UpdateProductEvent event, Emitter<ProductState> emit) {
     final state = this.state;
+    List<Product> mainList = state.listData;
+    var listIndex = mainList.indexOf(event.product);
+    List<Product> delete = List.from(state.listCart)
+      ..remove(listIndex)
+      ..insert(listIndex, event.product);
+
     emit(ProductState(
-        listData: List.from(state.listData)
-          ..removeWhere(
-            (element) => element.id == event.product.id,
-          )
-          ..add(event.product)));
+        listData: delete,
+        listCart: state.listCart,
+        listSelected: state.listSelected));
   }
 
   FutureOr<void> _onSelected(
       SelectProductEvent event, Emitter<ProductState> emit) {
     final state = this.state;
     List<Product> mainList = state.listData;
-    List<Product> selectList = state.listSelected;
 
-    selectList.addAll(mainList..where((e) => e.name == event.searching));
-    emit(ProductState(listData: mainList, listSelected: selectList));
+    emit(ProductState(
+        listData: state.listData,
+        listSelected: List.from(
+            mainList.where((element) => element.submenu == event.searching)),
+        listCart: state.listCart));
   }
 
   FutureOr<void> _onDeleteSelected(
@@ -117,19 +122,6 @@ class ProductBloc extends HydratedBloc<ProductEvent, ProductState> {
   FutureOr<void> _onDeleteCheckout(
       DeleteCheckoutEvent event, Emitter<ProductState> emit) {
     final state = this.state;
-    emit(ProductState(
-        listCart: List.from(state.listCart)..clear(),
-        listData: state.listData,
-        listSelected: state.listSelected));
-  }
-
-  FutureOr<void> _onCheckout(CheckoutEvent event, Emitter<ProductState> emit) {
-    final state = this.state;
-    emit(Loading());
-    emit(LoadedCheckout(
-      item: event.item,
-    ));
-    emit(Finish());
     emit(ProductState(
         listCart: List.from(state.listCart)..clear(),
         listData: state.listData,

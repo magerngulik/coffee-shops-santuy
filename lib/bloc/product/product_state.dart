@@ -42,14 +42,3 @@ class ProductState extends Equatable {
     );
   }
 }
-
-class Loading extends ProductState {}
-
-class LoadedCheckout extends ProductState {
-  Checkout item;
-  LoadedCheckout({
-    required this.item,
-  });
-}
-
-class Finish extends ProductState {}

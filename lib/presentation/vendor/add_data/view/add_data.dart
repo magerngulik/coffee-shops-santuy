@@ -18,15 +18,6 @@ class AddData extends StatefulWidget {
 
 class _AddDataState extends State<AddData> {
   var isEdit = false;
-  @override
-  void initState() {
-    super.initState();
-    if (widget.item != null) {
-      isEdit = true;
-      nameC.text = widget.item!.name;
-      priceC.text = widget.item!.price;
-    }
-  }
 
   //text editing controller
   final _formKey = GlobalKey<FormState>();
@@ -116,15 +107,76 @@ class _AddDataState extends State<AddData> {
         submenu: "Hot Coffee",
         category: "Drink"),
     Product(
-        id: "6",
-        name: "Freddo",
-        description:
-            "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.",
-        price: "24000",
-        favorite: "false",
-        image: "https://i.ibb.co/Dz9C9Kj/Freddo.jpg",
-        submenu: "Hot Coffee",
-        category: "Drink"),
+      id: "6",
+      name: "Freddo",
+      description:
+          "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.",
+      price: "24000",
+      favorite: "false",
+      image: "https://i.ibb.co/Dz9C9Kj/Freddo.jpg",
+      submenu: "Hot Coffee",
+      category: "Drink",
+    ),
+    Product(
+      id: "7",
+      name: "Ice Chocolate with Wasabi",
+      description:
+          "Jepang di dalam minuman! Perpaduan Coklat & Wasabi akan mengantar kalian ke negeri Sakura!",
+      price: "25000",
+      favorite: "false",
+      image:
+          "https://i.ibb.co/dBTYBQN/menueditor-item-a1af60cab2fe4688befbb3edf1264ee9-1644579822293609445.webp",
+      submenu: "Chocolate",
+      category: "Drink",
+    ),
+    Product(
+      id: "8",
+      name: "Ice Chocolate Mango",
+      description:
+          "Coklat Mangga ditambah choco cookies crumble? Ga mungkin kalau ga bikin nagih!",
+      price: "22500",
+      favorite: "false",
+      image:
+          "https://i.ibb.co/hmy3PC6/menueditor-item-398e73c11a374c7084978f7a48c52188-1644580317338268925.webp",
+      submenu: "Chocolate",
+      category: "Drink",
+    ),
+    Product(
+      id: "9",
+      name: "Ice Chocolate Strawberry",
+      description:
+          "Si Pinky cantik, bakal bikin kamu ketagihan deh! Perpaduan Strawberry dan Premium Chocolate yang bakal bikin harimu semanis warnanya.",
+      price: "22500",
+      favorite: "false",
+      image:
+          "https://i.ibb.co/MsDJTn8/menueditor-item-b86689871e064e73889cf41a096c7f9e-1644580254774376188.webp",
+      submenu: "Chocolate",
+      category: "Drink",
+    ),
+    Product(
+      id: "10",
+      name: "Ice Chocolate Caramel with Choco Cookies",
+      description:
+          "Coba bayangin perpaduan Coklat Premium, Caramel dan Choco Cookies Crumble waktu meleleh di mulut kamu. Wuih banget rasanya..!",
+      price: "22500",
+      favorite: "false",
+      image:
+          "https://i.ibb.co/JkHkv03/menueditor-item-e68497d7000d408586026fdf6c3f0416-1644580153500076666.webp",
+      submenu: "Chocolate",
+      category: "Drink",
+    ),
+    Product(
+      id: "11",
+      name: "Ice chocolate Milk with Coffee",
+      description:
+          "Memanggil para penggemar kopi dan coklat! Rasakan kelezatan dari perpaduan yang pas antara kopi & coklatnya!",
+      price: "22500",
+      favorite: "false",
+      image:
+          "https://i.ibb.co/31nJw35/menueditor-item-659eaf78397f4686bbf56bfaee83e18d-1644580039177195759.webp",
+      submenu: "Chocolate",
+      category: "Drink",
+    ),
   ];
 
   doDummy(ProductBloc productB) {
@@ -153,11 +205,34 @@ class _AddDataState extends State<AddData> {
   }
 
   @override
+  void initState() {
+    super.initState();
+    if (widget.item != null) {
+      isEdit = true;
+      nameC.text = widget.item!.name;
+      priceC.text = widget.item!.price;
+      descC.text = widget.item!.description;
+      image = widget.item!.image;
+
+      if (widget.item!.category == "Drink") {
+        isSubMenuDrink = true;
+        categorySelected = widget.item!.category;
+        subMenuSelected = widget.item!.submenu;
+      } else if (widget.item!.category == "Food") {
+        isSubMenuFood = true;
+        categorySelected = widget.item!.category;
+        subMenuSelected = widget.item!.submenu;
+      }
+    }
+  }
+
+  @override
   Widget build(BuildContext context) {
     ProductBloc productB = context.read<ProductBloc>();
     return Scaffold(
       appBar: AppBar(
-        title: const Text("Tambah data menu"),
+        title:
+            Text((widget.item != null) ? "Edit data menu" : "Tambah data menu"),
         actions: [
           IconButton(
             onPressed: () {
@@ -218,6 +293,7 @@ class _AddDataState extends State<AddData> {
                         image = value;
                       },
                       label: "image",
+                      value: image,
                       id: "image"),
                 ),
                 const HeadingText(
@@ -501,6 +577,27 @@ class _AddDataState extends State<AddData> {
                           }
 
                           if (isEdit) {
+                            debugPrint("id: ${widget.item!.id}");
+                            debugPrint("nameC: ${nameC.text}");
+                            debugPrint("image: $image");
+                            debugPrint("priceC: ${priceC.text}");
+                            debugPrint("description: ${descC.text}");
+                            debugPrint("category: $categorySelected");
+                            debugPrint("sub menu: $subMenuSelected");
+
+                            productB.add(
+                              UpdateProductEvent(
+                                product: Product(
+                                    id: widget.item!.id,
+                                    name: nameC.text,
+                                    image: image!,
+                                    price: priceC.text,
+                                    description: descC.text,
+                                    category: categorySelected!,
+                                    favorite: widget.item!.favorite,
+                                    submenu: subMenuSelected!),
+                              ),
+                            );
                           } else {
                             String id = Random().nextInt(999).toString();
                             debugPrint("id: $id");
@@ -521,7 +618,7 @@ class _AddDataState extends State<AddData> {
                                 favorite: "false",
                                 submenu: subMenuSelected!)));
                           }
-                          Navigator.pop(context);
+                          // Navigator.pop(context);
                         }
                       },
                       child: Text((isEdit) ? "Edit" : "Simpan"),

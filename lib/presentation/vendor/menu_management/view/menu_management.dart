@@ -153,6 +153,7 @@ class _MenuManagementState extends State<MenuManagement> {
                             ),
                             Text(
                               item.name,
+                              textAlign: TextAlign.center,
                               style: GoogleFonts.montserrat(
                                 textStyle:
                                     Theme.of(context).textTheme.headline4,
@@ -187,7 +188,15 @@ class _MenuManagementState extends State<MenuManagement> {
                                               BorderRadius.circular(12),
                                         ),
                                       ),
-                                      onPressed: () {},
+                                      onPressed: () {
+                                        Navigator.push(
+                                          context,
+                                          MaterialPageRoute(
+                                              builder: (context) => AddData(
+                                                    item: item,
+                                                  )),
+                                        );
+                                      },
                                       child: Text(
                                         "Edit",
                                         style: TextStyle(

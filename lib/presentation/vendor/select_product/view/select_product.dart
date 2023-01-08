@@ -6,6 +6,7 @@ import 'package:lottie/lottie.dart';
 import 'package:testing_local_storage/bloc/product/product_bloc.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:testing_local_storage/data/model/product.dart';
+import 'package:testing_local_storage/presentation/vendor/detail_product/view/detail_product.dart';
 
 class SelectProduct extends StatefulWidget {
   String? category;
@@ -106,15 +107,26 @@ class _SelectProductState extends State<SelectProduct> {
                             children: [
                               Row(
                                 children: [
-                                  Text(
-                                    item.name,
-                                    style: const TextStyle(
-                                      fontSize: 12.0,
+                                  Expanded(
+                                    child: Text(
+                                      item.name,
+                                      overflow: TextOverflow.ellipsis,
+                                      maxLines: 1,
+                                      style: const TextStyle(
+                                        fontSize: 12.0,
+                                      ),
                                     ),
                                   ),
-                                  const Spacer(),
                                   IconButton(
-                                    onPressed: () {},
+                                    onPressed: () {
+                                      Navigator.push(
+                                        context,
+                                        MaterialPageRoute(
+                                            builder: (context) => DetailProduct(
+                                                  item: item,
+                                                )),
+                                      );
+                                    },
                                     icon: const Icon(
                                       Icons.shopping_cart,
                                       size: 24.0,
@@ -132,6 +144,14 @@ class _SelectProductState extends State<SelectProduct> {
                                 style: const TextStyle(
                                   fontSize: 12.0,
                                   fontWeight: FontWeight.bold,
+                                ),
+                              ),
+                              Text(
+                                item.submenu,
+                                maxLines: 2,
+                                overflow: TextOverflow.ellipsis,
+                                style: const TextStyle(
+                                  fontSize: 12.0,
                                 ),
                               ),
                             ],

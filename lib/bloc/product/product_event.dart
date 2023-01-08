@@ -22,9 +22,7 @@ class DeleteProductEvent extends ProductEvent {
 
 class UpdateProductEvent extends ProductEvent {
   final Product product;
-  const UpdateProductEvent(
-    this.product,
-  );
+  const UpdateProductEvent({required this.product});
 }
 
 class SelectProductEvent extends ProductEvent {

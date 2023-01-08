@@ -104,6 +104,7 @@ class _DetailProductState extends State<DetailProduct> {
               ),
               Text(
                 widget.item!.name,
+                textAlign: TextAlign.center,
                 style: GoogleFonts.montserrat(
                   fontSize: 20,
                   fontWeight: FontWeight.bold,

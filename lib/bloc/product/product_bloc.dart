@@ -36,14 +36,10 @@ class ProductBloc extends HydratedBloc<ProductEvent, ProductState> {
   FutureOr<void> _onUpdate(
       UpdateProductEvent event, Emitter<ProductState> emit) {
     final state = this.state;
-    List<Product> mainList = state.listData;
-    var listIndex = mainList.indexOf(event.product);
-    List<Product> delete = List.from(state.listCart)
-      ..remove(listIndex)
-      ..insert(listIndex, event.product);
-
     emit(ProductState(
-        listData: delete,
+        listData: List.from(state.listData)
+          ..removeWhere((element) => element.id == event.product.id)
+          ..add(event.product),
         listCart: state.listCart,
         listSelected: state.listSelected));
   }

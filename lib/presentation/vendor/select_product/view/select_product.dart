@@ -119,7 +119,7 @@ class _SelectProductState extends State<SelectProduct> {
                                   ),
                                   IconButton(
                                     onPressed: () {
-                                      Navigator.push(
+                                      Navigator.pushReplacement(
                                         context,
                                         MaterialPageRoute(
                                             builder: (context) => DetailProduct(

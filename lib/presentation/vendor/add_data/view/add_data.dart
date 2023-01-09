@@ -180,8 +180,7 @@ class _AddDataState extends State<AddData> {
   ];
 
   doDummy(ProductBloc productB) {
-    String id = Random().nextInt(999).toString();
-    debugPrint("id: $id");
+    // debugPrint("id: $id");
     debugPrint("nameC: ${nameC.text}");
     debugPrint("image: $image");
     debugPrint("priceC: ${priceC.text}");
@@ -191,9 +190,10 @@ class _AddDataState extends State<AddData> {
 
     for (var i = 0; i < product.length; i++) {
       var item = product[i];
+      String id = Random().nextInt(999).toString();
 
       productB.add(AddProductEvent(Product(
-          id: id,
+          id: item.id,
           name: item.name,
           image: item.image,
           price: item.price,
@@ -577,13 +577,14 @@ class _AddDataState extends State<AddData> {
                           }
 
                           if (isEdit) {
-                            debugPrint("id: ${widget.item!.id}");
-                            debugPrint("nameC: ${nameC.text}");
-                            debugPrint("image: $image");
-                            debugPrint("priceC: ${priceC.text}");
-                            debugPrint("description: ${descC.text}");
-                            debugPrint("category: $categorySelected");
-                            debugPrint("sub menu: $subMenuSelected");
+                            // debugPrint("id: ${widget.item!.id}");
+                            // debugPrint("nameC: ${nameC.text}");
+                            // debugPrint("image: $image");
+                            // debugPrint("priceC: ${priceC.text}");
+                            // debugPrint("description: ${descC.text}");
+                            // debugPrint("category: $categorySelected");
+                            // debugPrint("sub menu: $subMenuSelected");
+                            print("Mode : $isEdit");
 
                             productB.add(
                               UpdateProductEvent(
@@ -618,7 +619,7 @@ class _AddDataState extends State<AddData> {
                                 favorite: "false",
                                 submenu: subMenuSelected!)));
                           }
-                          // Navigator.pop(context);
+                          Navigator.pop(context);
                         }
                       },
                       child: Text((isEdit) ? "Edit" : "Simpan"),

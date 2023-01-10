@@ -1,0 +1,24 @@
+{
+
+    "create_at" :"January 8, 2023 at 1:18:35 AM UTC+7",
+    "detail": {
+        "item":[
+            {"id":"874",
+            
+            "imageUrl" :"https://i.ibb.co/Pt4h4zj/capucino.jpg",
+            "name" :"https://i.ibb.co/Pt4h4zj/capucino.jpg",
+            "price" : "30000",
+            "qty" : 1 
+            }
+        ],
+        "point": 11000,
+        "total": 110000,
+        "vendor":{
+            "email": "zulkarnaim70@gmail.com",
+            "id": "0gqoGk8EI2SQtey12bkoMa17OzF2",
+            "name": "zulkar naim"
+        }
+    },
+    "id_costumer" : "0gqoGk8EI2SQtey12bkoMa17OzF2",
+    "name_costumer": "zulkar naim"
+}

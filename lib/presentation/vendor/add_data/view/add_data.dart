@@ -1,6 +1,8 @@
 import 'dart:math';
 
+import 'package:connectivity_wrapper/connectivity_wrapper.dart';
 import 'package:flutter/material.dart';
+import 'package:lottie/lottie.dart';
 import 'package:testing_local_storage/bloc/product/product_bloc.dart';
 
 import 'package:flutter_bloc/flutter_bloc.dart';
@@ -229,404 +231,429 @@ class _AddDataState extends State<AddData> {
   @override
   Widget build(BuildContext context) {
     ProductBloc productB = context.read<ProductBloc>();
-    return Scaffold(
-      appBar: AppBar(
-        title:
-            Text((widget.item != null) ? "Edit data menu" : "Tambah data menu"),
-        actions: [
-          IconButton(
-            onPressed: () {
-              doDummy(productB);
-            },
-            icon: const Icon(
-              Icons.toys,
-              size: 24.0,
-            ),
+    return ConnectivityWidgetWrapper(
+      disableInteraction: true,
+      offlineWidget: Scaffold(
+        body: Center(
+          child: Column(
+            crossAxisAlignment: CrossAxisAlignment.center,
+            mainAxisAlignment: MainAxisAlignment.center,
+            children: [
+              SizedBox(
+                  width: 250,
+                  height: 250,
+                  child: Lottie.asset("assets/lottie/no-internet.json")),
+              const Text(
+                'Hubungkan dengan koneksi internet untuk menggunakan menu ini!',
+                textAlign: TextAlign.center,
+                style: TextStyle(
+                  fontWeight: FontWeight.bold,
+                ),
+              ),
+            ],
           ),
-        ],
+        ),
       ),
-      body: SingleChildScrollView(
-        child: Form(
-          key: _formKey,
-          child: Container(
-            padding: const EdgeInsets.all(10.0),
-            child: Column(
-              crossAxisAlignment: CrossAxisAlignment.start,
-              children: [
-                const HeadingText(
-                  label: "Name",
-                ),
-                Container(
-                  padding: const EdgeInsets.all(12),
-                  margin: const EdgeInsets.only(),
-                  child: TextFormField(
-                    controller: nameC,
-                    validator: (value) {
-                      if (value == null || value.isEmpty) {
-                        return 'Masukan nama';
-                      }
-                      return null;
-                    },
-                    decoration: const InputDecoration(
-                      border: OutlineInputBorder(
-                          borderSide: BorderSide(color: Colors.blueGrey)),
-                      hintText: 'Name',
-                      labelStyle: TextStyle(
-                        color: Colors.blueGrey,
-                      ),
-                      enabledBorder: OutlineInputBorder(
-                        borderSide: BorderSide(
-                          color: Colors.blueGrey,
-                        ),
-                      ),
-                    ),
-                    onChanged: (value) {},
+      child: Scaffold(
+        appBar: AppBar(
+          title: Text(
+              (widget.item != null) ? "Edit data menu" : "Tambah data menu"),
+          actions: [
+            IconButton(
+              onPressed: () {
+                doDummy(productB);
+              },
+              icon: const Icon(
+                Icons.toys,
+                size: 24.0,
+              ),
+            ),
+          ],
+        ),
+        body: SingleChildScrollView(
+          child: Form(
+            key: _formKey,
+            child: Container(
+              padding: const EdgeInsets.all(10.0),
+              child: Column(
+                crossAxisAlignment: CrossAxisAlignment.start,
+                children: [
+                  const HeadingText(
+                    label: "Name",
                   ),
-                ),
-                const HeadingText(
-                  label: "Image",
-                ),
-                Padding(
-                  padding: const EdgeInsets.symmetric(horizontal: 10.0),
-                  child: QimagePicker(
-                      onChanged: (value) {
-                        image = value;
-                      },
-                      label: "image",
-                      value: image,
-                      id: "image"),
-                ),
-                const HeadingText(
-                  label: "Price",
-                ),
-                Container(
-                  padding: const EdgeInsets.all(12),
-                  margin: const EdgeInsets.only(),
-                  child: TextFormField(
-                    validator: (value) {
-                      if (value == null || value.isEmpty) {
-                        return 'Masukan harga';
-                      }
-                      return null;
-                    },
-                    controller: priceC,
-                    keyboardType: TextInputType.number,
-                    decoration: const InputDecoration(
-                      border: OutlineInputBorder(
-                          borderSide: BorderSide(color: Colors.blueGrey)),
-                      hintText: 'Price',
-                      labelStyle: TextStyle(
-                        color: Colors.blueGrey,
-                      ),
-                      enabledBorder: OutlineInputBorder(
-                        borderSide: BorderSide(
-                          color: Colors.blueGrey,
-                        ),
-                      ),
-                    ),
-                    onChanged: (value) {},
-                  ),
-                ),
-                const SizedBox(
-                  height: 10.0,
-                ),
-                const HeadingText(
-                  label: "Category",
-                ),
-                const SizedBox(
-                  height: 10.0,
-                ),
-                Padding(
-                  padding: const EdgeInsets.symmetric(horizontal: 10.0),
-                  child: SizedBox(
-                    height: 50.0,
-                    child: ListView.builder(
-                      itemCount: category.length,
-                      scrollDirection: Axis.horizontal,
-                      itemBuilder: (context, index) {
-                        var item = category[index];
-                        return InkWell(
-                          onTap: () {
-                            categorySelected = item;
-                            doSubSelected(item);
-                            setState(() {});
-                          },
-                          child: Container(
-                            width: 100.0,
-                            padding: const EdgeInsets.all(10.0),
-                            margin: const EdgeInsets.only(right: 10.0),
-                            decoration: BoxDecoration(
-                                color: (categorySelected == item)
-                                    ? Colors.blue[400]
-                                    : Colors.white,
-                                borderRadius: const BorderRadius.all(
-                                  Radius.circular(10.0),
-                                ),
-                                border: (categorySelected != item)
-                                    ? Border.all(
-                                        width: 1.0,
-                                        color: Colors.grey,
-                                      )
-                                    : const Border()),
-                            child: Center(
-                              child: Text(
-                                "$item",
-                                style: TextStyle(
-                                  color: (categorySelected == item)
-                                      ? Colors.white
-                                      : Colors.grey,
-                                  fontSize: 15.0,
-                                ),
-                              ),
-                            ),
-                          ),
-                        );
-                      },
-                    ),
-                  ),
-                ),
-                const SizedBox(
-                  height: 10.0,
-                ),
-                Visibility(
-                  visible: (isSubMenuDrink || isSubMenuFood),
-                  child: const HeadingText(
-                    label: "Sub Menu",
-                  ),
-                ),
-                const SizedBox(
-                  height: 10.0,
-                ),
-                Visibility(
-                  visible: isSubMenuFood,
-                  child: Padding(
-                    padding: const EdgeInsets.symmetric(horizontal: 10.0),
-                    child: SizedBox(
-                      height: 50.0,
-                      child: ListView.builder(
-                        itemCount: foodSubMenu.length,
-                        scrollDirection: Axis.horizontal,
-                        itemBuilder: (context, index) {
-                          var item = foodSubMenu[index];
-                          return InkWell(
-                            onTap: () {
-                              subMenuSelected = item;
-                              setState(() {});
-                            },
-                            child: Container(
-                              // width: 100.0,
-                              padding: const EdgeInsets.all(10.0),
-                              margin: const EdgeInsets.only(right: 10.0),
-                              decoration: BoxDecoration(
-                                  color: (subMenuSelected == item)
-                                      ? Colors.blue[400]
-                                      : Colors.white,
-                                  borderRadius: const BorderRadius.all(
-                                    Radius.circular(10.0),
-                                  ),
-                                  border: (subMenuSelected != item)
-                                      ? Border.all(
-                                          width: 1.0,
-                                          color: Colors.grey,
-                                        )
-                                      : const Border()),
-                              child: Center(
-                                child: Text(
-                                  "$item",
-                                  style: TextStyle(
-                                    color: (subMenuSelected == item)
-                                        ? Colors.white
-                                        : Colors.grey,
-                                    fontSize: 15.0,
-                                  ),
-                                ),
-                              ),
-                            ),
-                          );
-                        },
-                      ),
-                    ),
-                  ),
-                ),
-                Visibility(
-                  visible: isSubMenuDrink,
-                  child: Padding(
-                    padding: const EdgeInsets.symmetric(horizontal: 10.0),
-                    child: SizedBox(
-                      height: 50.0,
-                      child: ListView.builder(
-                        itemCount: drinkSubMenu.length,
-                        scrollDirection: Axis.horizontal,
-                        itemBuilder: (context, index) {
-                          var item = drinkSubMenu[index];
-                          return InkWell(
-                            onTap: () {
-                              subMenuSelected = item;
-                              setState(() {});
-                            },
-                            child: Container(
-                              // width: 100.0,
-                              padding: const EdgeInsets.all(10.0),
-                              margin: const EdgeInsets.only(right: 10.0),
-                              decoration: BoxDecoration(
-                                  color: (subMenuSelected == item)
-                                      ? Colors.blue[400]
-                                      : Colors.white,
-                                  borderRadius: const BorderRadius.all(
-                                    Radius.circular(10.0),
-                                  ),
-                                  border: (subMenuSelected != item)
-                                      ? Border.all(
-                                          width: 1.0,
-                                          color: Colors.grey,
-                                        )
-                                      : const Border()),
-                              child: Center(
-                                child: Text(
-                                  "$item",
-                                  style: TextStyle(
-                                    color: (subMenuSelected == item)
-                                        ? Colors.white
-                                        : Colors.grey,
-                                    fontSize: 15.0,
-                                  ),
-                                ),
-                              ),
-                            ),
-                          );
-                        },
-                      ),
-                    ),
-                  ),
-                ),
-                const SizedBox(
-                  height: 10.0,
-                ),
-                const HeadingText(
-                  label: "Description",
-                ),
-                Container(
-                  padding: const EdgeInsets.all(12),
-                  margin: const EdgeInsets.only(),
-                  child: TextFormField(
-                    maxLines: 5,
-                    validator: (value) {
-                      if (value == null || value.isEmpty) {
-                        return 'Masukan Description';
-                      }
-                      return null;
-                    },
-                    controller: descC,
-                    keyboardType: TextInputType.text,
-                    decoration: const InputDecoration(
-                      border: OutlineInputBorder(
-                          borderSide: BorderSide(color: Colors.blueGrey)),
-                      hintText: 'Description',
-                      labelStyle: TextStyle(
-                        color: Colors.blueGrey,
-                      ),
-                      enabledBorder: OutlineInputBorder(
-                        borderSide: BorderSide(
-                          color: Colors.blueGrey,
-                        ),
-                      ),
-                    ),
-                    onChanged: (value) {},
-                  ),
-                ),
-                const SizedBox(
-                  height: 10.0,
-                ),
-                Center(
-                  child: SizedBox(
-                    width: 350,
-                    height: 50,
-                    child: ElevatedButton(
-                      style: ElevatedButton.styleFrom(
-                        shape: RoundedRectangleBorder(
-                          borderRadius: BorderRadius.circular(16), // <-- Radius
-                        ),
-                      ),
-                      onPressed: () {
-                        if (_formKey.currentState!.validate()) {
-                          if (subMenuSelected == "" ||
-                              subMenuSelected == null) {
-                            const snackBar = SnackBar(
-                              content: Text('Sub menu belum di pilih!'),
-                            );
-                            ScaffoldMessenger.of(context)
-                                .showSnackBar(snackBar);
-                            return;
-                          }
-                          if (categorySelected == "" ||
-                              categorySelected == null) {
-                            const snackBar = SnackBar(
-                              content: Text('Category di pilih!'),
-                            );
-                            ScaffoldMessenger.of(context)
-                                .showSnackBar(snackBar);
-                            return;
-                          }
-                          if (image == "" || image == null) {
-                            const snackBar = SnackBar(
-                              content: Text('image belum di masukan!'),
-                            );
-                            ScaffoldMessenger.of(context)
-                                .showSnackBar(snackBar);
-                            return;
-                          }
-
-                          if (isEdit) {
-                            // debugPrint("id: ${widget.item!.id}");
-                            // debugPrint("nameC: ${nameC.text}");
-                            // debugPrint("image: $image");
-                            // debugPrint("priceC: ${priceC.text}");
-                            // debugPrint("description: ${descC.text}");
-                            // debugPrint("category: $categorySelected");
-                            // debugPrint("sub menu: $subMenuSelected");
-                            print("Mode : $isEdit");
-
-                            productB.add(
-                              UpdateProductEvent(
-                                product: Product(
-                                    id: widget.item!.id,
-                                    name: nameC.text,
-                                    image: image!,
-                                    price: priceC.text,
-                                    description: descC.text,
-                                    category: categorySelected!,
-                                    favorite: widget.item!.favorite,
-                                    submenu: subMenuSelected!),
-                              ),
-                            );
-                          } else {
-                            String id = Random().nextInt(999).toString();
-                            debugPrint("id: $id");
-                            debugPrint("nameC: ${nameC.text}");
-                            debugPrint("image: $image");
-                            debugPrint("priceC: ${priceC.text}");
-                            debugPrint("description: ${descC.text}");
-                            debugPrint("sub menu: $subMenuSelected");
-                            debugPrint("category: $categorySelected");
-
-                            productB.add(AddProductEvent(Product(
-                                id: id,
-                                name: nameC.text,
-                                image: image!,
-                                price: priceC.text,
-                                description: descC.text,
-                                category: categorySelected!,
-                                favorite: "false",
-                                submenu: subMenuSelected!)));
-                          }
-                          Navigator.pop(context);
+                  Container(
+                    padding: const EdgeInsets.all(12),
+                    margin: const EdgeInsets.only(),
+                    child: TextFormField(
+                      controller: nameC,
+                      validator: (value) {
+                        if (value == null || value.isEmpty) {
+                          return 'Masukan nama';
                         }
+                        return null;
                       },
-                      child: Text((isEdit) ? "Edit" : "Simpan"),
+                      decoration: const InputDecoration(
+                        border: OutlineInputBorder(
+                            borderSide: BorderSide(color: Colors.blueGrey)),
+                        hintText: 'Name',
+                        labelStyle: TextStyle(
+                          color: Colors.blueGrey,
+                        ),
+                        enabledBorder: OutlineInputBorder(
+                          borderSide: BorderSide(
+                            color: Colors.blueGrey,
+                          ),
+                        ),
+                      ),
+                      onChanged: (value) {},
                     ),
                   ),
-                ),
-              ],
+                  const HeadingText(
+                    label: "Image",
+                  ),
+                  Padding(
+                    padding: const EdgeInsets.symmetric(horizontal: 10.0),
+                    child: QimagePicker(
+                        onChanged: (value) {
+                          image = value;
+                        },
+                        label: "image",
+                        value: image,
+                        id: "image"),
+                  ),
+                  const HeadingText(
+                    label: "Price",
+                  ),
+                  Container(
+                    padding: const EdgeInsets.all(12),
+                    margin: const EdgeInsets.only(),
+                    child: TextFormField(
+                      validator: (value) {
+                        if (value == null || value.isEmpty) {
+                          return 'Masukan harga';
+                        }
+                        return null;
+                      },
+                      controller: priceC,
+                      keyboardType: TextInputType.number,
+                      decoration: const InputDecoration(
+                        border: OutlineInputBorder(
+                            borderSide: BorderSide(color: Colors.blueGrey)),
+                        hintText: 'Price',
+                        labelStyle: TextStyle(
+                          color: Colors.blueGrey,
+                        ),
+                        enabledBorder: OutlineInputBorder(
+                          borderSide: BorderSide(
+                            color: Colors.blueGrey,
+                          ),
+                        ),
+                      ),
+                      onChanged: (value) {},
+                    ),
+                  ),
+                  const SizedBox(
+                    height: 10.0,
+                  ),
+                  const HeadingText(
+                    label: "Category",
+                  ),
+                  const SizedBox(
+                    height: 10.0,
+                  ),
+                  Padding(
+                    padding: const EdgeInsets.symmetric(horizontal: 10.0),
+                    child: SizedBox(
+                      height: 50.0,
+                      child: ListView.builder(
+                        itemCount: category.length,
+                        scrollDirection: Axis.horizontal,
+                        itemBuilder: (context, index) {
+                          var item = category[index];
+                          return InkWell(
+                            onTap: () {
+                              categorySelected = item;
+                              doSubSelected(item);
+                              setState(() {});
+                            },
+                            child: Container(
+                              width: 100.0,
+                              padding: const EdgeInsets.all(10.0),
+                              margin: const EdgeInsets.only(right: 10.0),
+                              decoration: BoxDecoration(
+                                  color: (categorySelected == item)
+                                      ? Colors.blue[400]
+                                      : Colors.white,
+                                  borderRadius: const BorderRadius.all(
+                                    Radius.circular(10.0),
+                                  ),
+                                  border: (categorySelected != item)
+                                      ? Border.all(
+                                          width: 1.0,
+                                          color: Colors.grey,
+                                        )
+                                      : const Border()),
+                              child: Center(
+                                child: Text(
+                                  "$item",
+                                  style: TextStyle(
+                                    color: (categorySelected == item)
+                                        ? Colors.white
+                                        : Colors.grey,
+                                    fontSize: 15.0,
+                                  ),
+                                ),
+                              ),
+                            ),
+                          );
+                        },
+                      ),
+                    ),
+                  ),
+                  const SizedBox(
+                    height: 10.0,
+                  ),
+                  Visibility(
+                    visible: (isSubMenuDrink || isSubMenuFood),
+                    child: const HeadingText(
+                      label: "Sub Menu",
+                    ),
+                  ),
+                  const SizedBox(
+                    height: 10.0,
+                  ),
+                  Visibility(
+                    visible: isSubMenuFood,
+                    child: Padding(
+                      padding: const EdgeInsets.symmetric(horizontal: 10.0),
+                      child: SizedBox(
+                        height: 50.0,
+                        child: ListView.builder(
+                          itemCount: foodSubMenu.length,
+                          scrollDirection: Axis.horizontal,
+                          itemBuilder: (context, index) {
+                            var item = foodSubMenu[index];
+                            return InkWell(
+                              onTap: () {
+                                subMenuSelected = item;
+                                setState(() {});
+                              },
+                              child: Container(
+                                // width: 100.0,
+                                padding: const EdgeInsets.all(10.0),
+                                margin: const EdgeInsets.only(right: 10.0),
+                                decoration: BoxDecoration(
+                                    color: (subMenuSelected == item)
+                                        ? Colors.blue[400]
+                                        : Colors.white,
+                                    borderRadius: const BorderRadius.all(
+                                      Radius.circular(10.0),
+                                    ),
+                                    border: (subMenuSelected != item)
+                                        ? Border.all(
+                                            width: 1.0,
+                                            color: Colors.grey,
+                                          )
+                                        : const Border()),
+                                child: Center(
+                                  child: Text(
+                                    "$item",
+                                    style: TextStyle(
+                                      color: (subMenuSelected == item)
+                                          ? Colors.white
+                                          : Colors.grey,
+                                      fontSize: 15.0,
+                                    ),
+                                  ),
+                                ),
+                              ),
+                            );
+                          },
+                        ),
+                      ),
+                    ),
+                  ),
+                  Visibility(
+                    visible: isSubMenuDrink,
+                    child: Padding(
+                      padding: const EdgeInsets.symmetric(horizontal: 10.0),
+                      child: SizedBox(
+                        height: 50.0,
+                        child: ListView.builder(
+                          itemCount: drinkSubMenu.length,
+                          scrollDirection: Axis.horizontal,
+                          itemBuilder: (context, index) {
+                            var item = drinkSubMenu[index];
+                            return InkWell(
+                              onTap: () {
+                                subMenuSelected = item;
+                                setState(() {});
+                              },
+                              child: Container(
+                                // width: 100.0,
+                                padding: const EdgeInsets.all(10.0),
+                                margin: const EdgeInsets.only(right: 10.0),
+                                decoration: BoxDecoration(
+                                    color: (subMenuSelected == item)
+                                        ? Colors.blue[400]
+                                        : Colors.white,
+                                    borderRadius: const BorderRadius.all(
+                                      Radius.circular(10.0),
+                                    ),
+                                    border: (subMenuSelected != item)
+                                        ? Border.all(
+                                            width: 1.0,
+                                            color: Colors.grey,
+                                          )
+                                        : const Border()),
+                                child: Center(
+                                  child: Text(
+                                    "$item",
+                                    style: TextStyle(
+                                      color: (subMenuSelected == item)
+                                          ? Colors.white
+                                          : Colors.grey,
+                                      fontSize: 15.0,
+                                    ),
+                                  ),
+                                ),
+                              ),
+                            );
+                          },
+                        ),
+                      ),
+                    ),
+                  ),
+                  const SizedBox(
+                    height: 10.0,
+                  ),
+                  const HeadingText(
+                    label: "Description",
+                  ),
+                  Container(
+                    padding: const EdgeInsets.all(12),
+                    margin: const EdgeInsets.only(),
+                    child: TextFormField(
+                      maxLines: 5,
+                      validator: (value) {
+                        if (value == null || value.isEmpty) {
+                          return 'Masukan Description';
+                        }
+                        return null;
+                      },
+                      controller: descC,
+                      keyboardType: TextInputType.text,
+                      decoration: const InputDecoration(
+                        border: OutlineInputBorder(
+                            borderSide: BorderSide(color: Colors.blueGrey)),
+                        hintText: 'Description',
+                        labelStyle: TextStyle(
+                          color: Colors.blueGrey,
+                        ),
+                        enabledBorder: OutlineInputBorder(
+                          borderSide: BorderSide(
+                            color: Colors.blueGrey,
+                          ),
+                        ),
+                      ),
+                      onChanged: (value) {},
+                    ),
+                  ),
+                  const SizedBox(
+                    height: 10.0,
+                  ),
+                  Center(
+                    child: SizedBox(
+                      width: 350,
+                      height: 50,
+                      child: ElevatedButton(
+                        style: ElevatedButton.styleFrom(
+                          shape: RoundedRectangleBorder(
+                            borderRadius:
+                                BorderRadius.circular(16), // <-- Radius
+                          ),
+                        ),
+                        onPressed: () {
+                          if (_formKey.currentState!.validate()) {
+                            if (subMenuSelected == "" ||
+                                subMenuSelected == null) {
+                              const snackBar = SnackBar(
+                                content: Text('Sub menu belum di pilih!'),
+                              );
+                              ScaffoldMessenger.of(context)
+                                  .showSnackBar(snackBar);
+                              return;
+                            }
+                            if (categorySelected == "" ||
+                                categorySelected == null) {
+                              const snackBar = SnackBar(
+                                content: Text('Category di pilih!'),
+                              );
+                              ScaffoldMessenger.of(context)
+                                  .showSnackBar(snackBar);
+                              return;
+                            }
+                            if (image == "" || image == null) {
+                              const snackBar = SnackBar(
+                                content: Text('image belum di masukan!'),
+                              );
+                              ScaffoldMessenger.of(context)
+                                  .showSnackBar(snackBar);
+                              return;
+                            }
+
+                            if (isEdit) {
+                              // debugPrint("id: ${widget.item!.id}");
+                              // debugPrint("nameC: ${nameC.text}");
+                              // debugPrint("image: $image");
+                              // debugPrint("priceC: ${priceC.text}");
+                              // debugPrint("description: ${descC.text}");
+                              // debugPrint("category: $categorySelected");
+                              // debugPrint("sub menu: $subMenuSelected");
+                              print("Mode : $isEdit");
+
+                              productB.add(
+                                UpdateProductEvent(
+                                  product: Product(
+                                      id: widget.item!.id,
+                                      name: nameC.text,
+                                      image: image!,
+                                      price: priceC.text,
+                                      description: descC.text,
+                                      category: categorySelected!,
+                                      favorite: widget.item!.favorite,
+                                      submenu: subMenuSelected!),
+                                ),
+                              );
+                            } else {
+                              String id = Random().nextInt(999).toString();
+                              debugPrint("id: $id");
+                              debugPrint("nameC: ${nameC.text}");
+                              debugPrint("image: $image");
+                              debugPrint("priceC: ${priceC.text}");
+                              debugPrint("description: ${descC.text}");
+                              debugPrint("sub menu: $subMenuSelected");
+                              debugPrint("category: $categorySelected");
+
+                              productB.add(AddProductEvent(Product(
+                                  id: id,
+                                  name: nameC.text,
+                                  image: image!,
+                                  price: priceC.text,
+                                  description: descC.text,
+                                  category: categorySelected!,
+                                  favorite: "false",
+                                  submenu: subMenuSelected!)));
+                            }
+                            Navigator.pop(context);
+                          }
+                        },
+                        child: Text((isEdit) ? "Edit" : "Simpan"),
+                      ),
+                    ),
+                  ),
+                ],
+              ),
             ),
           ),
         ),

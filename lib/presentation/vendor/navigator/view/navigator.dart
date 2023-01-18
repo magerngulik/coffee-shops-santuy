@@ -7,7 +7,6 @@ import 'package:testing_local_storage/bloc/visible/visible_cubit.dart';
 import 'package:testing_local_storage/presentation/auth/auth_user.dart';
 import 'package:testing_local_storage/presentation/vendor/home/view/home.dart';
 import 'package:testing_local_storage/presentation/vendor/menu_management/view/menu_management.dart';
-import 'package:testing_local_storage/presentation/vendor/testing/view/testing.dart';
 
 class NavigatorPage extends StatefulWidget {
   const NavigatorPage({super.key});
@@ -18,10 +17,10 @@ class NavigatorPage extends StatefulWidget {
 
 class _NavigatorPageState extends State<NavigatorPage> {
   List item = [
-    {"id": 0, "icon": FontAwesomeIcons.house},
-    {"id": 1, "icon": FontAwesomeIcons.bookmark},
-    {"id": 2, "icon": FontAwesomeIcons.bagShopping},
-    {"id": 3, "icon": FontAwesomeIcons.file},
+    {"id": 0, "icon": FontAwesomeIcons.bowlFood},
+    {"id": 1, "icon": FontAwesomeIcons.bars},
+    // {"id": 2, "icon": FontAwesomeIcons.file},
+    // {"id": 3, "icon": FontAwesomeIcons.user},
   ];
 
   int selected = 0;
@@ -68,13 +67,33 @@ class _NavigatorPageState extends State<NavigatorPage> {
                           const SizedBox(
                             height: 50,
                           ),
-                          IconButton(
-                            onPressed: () {},
-                            icon: FaIcon(
-                              FontAwesomeIcons.google,
-                              size: 24.0.h,
-                              color: Colors.orange,
-                            ),
+                          // IconButton(
+                          //   onPressed: () {},
+                          //   icon: FaIcon(
+                          //     FontAwesomeIcons.google,
+                          //     size: 24.0.h,
+                          //     color: Colors.orange,
+                          //   ),
+                          // ),
+                          Column(
+                            children: [
+                              Container(
+                                height: 55,
+                                decoration: const BoxDecoration(
+                                  image: DecorationImage(
+                                    image: AssetImage(
+                                      "assets/image/logo.png",
+                                    ),
+                                    fit: BoxFit.fitHeight,
+                                  ),
+                                  borderRadius: BorderRadius.all(
+                                    Radius.circular(
+                                      16.0,
+                                    ),
+                                  ),
+                                ),
+                              ),
+                            ],
                           ),
                           const SizedBox(
                             height: 100,
@@ -124,16 +143,16 @@ class _NavigatorPageState extends State<NavigatorPage> {
                               );
                             }),
                           ),
-                          IconButton(
-                            onPressed: () {
-                              status.changeVisible();
-                            },
-                            icon: FaIcon(
-                              FontAwesomeIcons.gear,
-                              size: 24.0.h,
-                              color: Colors.grey,
-                            ),
-                          ),
+                          // IconButton(
+                          //   onPressed: () {
+                          //     status.changeVisible();
+                          //   },
+                          //   icon: FaIcon(
+                          //     FontAwesomeIcons.gear,
+                          //     size: 24.0.h,
+                          //     color: Colors.grey,
+                          //   ),
+                          // ),
                           const SizedBox(
                             height: 10.0,
                           ),
@@ -197,10 +216,8 @@ class _NavigatorPageState extends State<NavigatorPage> {
                         children: [
                           HomePage(),
                           const MenuManagement(),
-                          const TestingPage(),
-                          Container(
-                            color: Colors.blue[100],
-                          ),
+                          // const ReportProduct(),
+                          // const TestingPage()
                         ],
                       ),
                     ),

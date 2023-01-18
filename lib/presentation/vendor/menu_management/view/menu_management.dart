@@ -1,6 +1,7 @@
 // ignore_for_file: camel_case_types, prefer_typing_uninitialized_variables
 
 import 'package:cached_network_image/cached_network_image.dart';
+import 'package:connectivity_wrapper/connectivity_wrapper.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:google_fonts/google_fonts.dart';
@@ -37,11 +38,48 @@ class _MenuManagementState extends State<MenuManagement> {
         ),
         actions: [
           IconButton(
-            onPressed: () {
-              Navigator.push(
-                context,
-                MaterialPageRoute(builder: (context) => AddData()),
-              );
+            onPressed: () async {
+              if (await ConnectivityWrapper.instance.isConnected) {
+                Navigator.push(
+                  context,
+                  MaterialPageRoute(builder: (context) => AddData()),
+                );
+              } else {
+                await showDialog<void>(
+                  context: context,
+                  barrierDismissible: true,
+                  builder: (BuildContext context) {
+                    return AlertDialog(
+                        title: const Text('Peringatan'),
+                        content: SingleChildScrollView(
+                          child: ListBody(
+                            children: <Widget>[
+                              SizedBox(
+                                  width: 250,
+                                  height: 250,
+                                  child: Lottie.asset(
+                                      "assets/lottie/no-internet.json")),
+                              const Text(
+                                'Hubungkan dengan koneksi internet untuk mengakses menu ini!',
+                                textAlign: TextAlign.center,
+                              ),
+                            ],
+                          ),
+                        ),
+                        actions: <Widget>[
+                          ElevatedButton(
+                            style: ElevatedButton.styleFrom(
+                              backgroundColor: Colors.orange,
+                            ),
+                            onPressed: () {
+                              Navigator.pop(context);
+                            },
+                            child: const Text("Oke"),
+                          ),
+                        ]);
+                  },
+                );
+              }
             },
             icon: const Icon(
               Icons.add,
@@ -188,14 +226,57 @@ class _MenuManagementState extends State<MenuManagement> {
                                               BorderRadius.circular(12),
                                         ),
                                       ),
-                                      onPressed: () {
-                                        Navigator.push(
-                                          context,
-                                          MaterialPageRoute(
-                                              builder: (context) => AddData(
-                                                    item: item,
-                                                  )),
-                                        );
+                                      onPressed: () async {
+                                        if (await ConnectivityWrapper
+                                            .instance.isConnected) {
+                                          Navigator.push(
+                                            context,
+                                            MaterialPageRoute(
+                                                builder: (context) => AddData(
+                                                      item: item,
+                                                    )),
+                                          );
+                                        } else {
+                                          await showDialog<void>(
+                                            context: context,
+                                            barrierDismissible: true,
+                                            builder: (BuildContext context) {
+                                              return AlertDialog(
+                                                  title:
+                                                      const Text('Peringatan'),
+                                                  content:
+                                                      SingleChildScrollView(
+                                                    child: ListBody(
+                                                      children: <Widget>[
+                                                        SizedBox(
+                                                            width: 250,
+                                                            height: 250,
+                                                            child: Lottie.asset(
+                                                                "assets/lottie/no-internet.json")),
+                                                        const Text(
+                                                          'Hubungkan dengan koneksi internet untuk mengakses menu ini!',
+                                                          textAlign:
+                                                              TextAlign.center,
+                                                        ),
+                                                      ],
+                                                    ),
+                                                  ),
+                                                  actions: <Widget>[
+                                                    ElevatedButton(
+                                                      style: ElevatedButton
+                                                          .styleFrom(
+                                                        backgroundColor:
+                                                            Colors.orange,
+                                                      ),
+                                                      onPressed: () {
+                                                        Navigator.pop(context);
+                                                      },
+                                                      child: const Text("Oke"),
+                                                    ),
+                                                  ]);
+                                            },
+                                          );
+                                        }
                                       },
                                       child: Text(
                                         "Edit",

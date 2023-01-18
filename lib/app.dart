@@ -1,3 +1,4 @@
+import 'package:connectivity_wrapper/connectivity_wrapper.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
@@ -39,23 +40,26 @@ class App extends StatelessWidget {
                 create: (context) => UserBloc(),
               )
             ],
-            child: MaterialApp(
-                title: 'Flutter Demo',
-                theme: ThemeData.light().copyWith(
-                    buttonTheme: const ButtonThemeData(
-                      buttonColor: Colors.orange,
-                    ),
-                    appBarTheme: AppBarTheme(
-                        elevation: 0,
-                        backgroundColor: Colors.white,
-                        titleTextStyle: GoogleFonts.lato(
-                          textStyle: Theme.of(context).textTheme.headline4,
-                          fontSize: 20,
-                          fontWeight: FontWeight.bold,
-                          color: Colors.black,
-                        ),
-                        iconTheme: const IconThemeData(color: Colors.black))),
-                home: mainview),
+            child: ConnectivityAppWrapper(
+              app: MaterialApp(
+                  debugShowCheckedModeBanner: false,
+                  title: 'Flutter Demo',
+                  theme: ThemeData.light().copyWith(
+                      buttonTheme: const ButtonThemeData(
+                        buttonColor: Colors.orange,
+                      ),
+                      appBarTheme: AppBarTheme(
+                          elevation: 0,
+                          backgroundColor: Colors.white,
+                          titleTextStyle: GoogleFonts.lato(
+                            textStyle: Theme.of(context).textTheme.headline4,
+                            fontSize: 20,
+                            fontWeight: FontWeight.bold,
+                            color: Colors.black,
+                          ),
+                          iconTheme: const IconThemeData(color: Colors.black))),
+                  home: mainview),
+            ),
           );
         });
   }

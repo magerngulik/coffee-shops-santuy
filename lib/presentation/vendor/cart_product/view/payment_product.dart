@@ -6,11 +6,10 @@ import 'package:cached_network_image/cached_network_image.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
-import 'package:qr_flutter/qr_flutter.dart';
 import 'package:testing_local_storage/bloc/product/product_bloc.dart';
 import 'package:testing_local_storage/data/model/checkout_model.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:testing_local_storage/util/shared/widget/dialog/show_custom_dialog.dart';
+import 'package:testing_local_storage/presentation/vendor/cart_product/view/detail_payment.dart';
 
 class PaymentProduct extends StatefulWidget {
   List<Item> chekout;
@@ -233,9 +232,7 @@ class _PaymentProductState extends State<PaymentProduct> {
                             onPressed: () async {
                               if (_formKey.currentState!.validate()) {
                                 double totalPoint = (widget.total / 100) * 10;
-
-                                var qrCodeString = jsonEncode(
-                                  Checkout(
+                                Checkout checkitem = Checkout(
                                     point: totalPoint.toInt(),
                                     item: widget.chekout,
                                     total: widget.total,
@@ -245,35 +242,38 @@ class _PaymentProductState extends State<PaymentProduct> {
                                             .instance.currentUser!.uid,
                                         email: FirebaseAuth
                                             .instance.currentUser!.email,
-                                        name: FirebaseAuth
-                                            .instance.currentUser!.displayName),
-                                  ),
-                                );
-                                await showCustomDialog(
-                                  globalContext: context,
-                                  title: "Order success",
-                                  children: [
-                                    Center(
-                                      child: SizedBox(
-                                        height: 250.0,
-                                        width: 250.0,
-                                        child: QrImage(
-                                          data: qrCodeString,
-                                          version: QrVersions.auto,
-                                          size: 200.0,
-                                        ),
-                                      ),
-                                    ),
-                                  ],
-                                );
-                                productBloc.add(DeleteCheckoutEvent());
-                              }
+                                        name: FirebaseAuth.instance.currentUser!
+                                            .displayName));
 
-                              var count = 0;
-                              // ignore: use_build_context_synchronously
-                              Navigator.popUntil(context, (route) {
-                                return count++ == 2;
-                              });
+                                var qrCodeString = jsonEncode(checkitem);
+                                // await showCustomDialog(
+                                //   globalContext: context,
+                                //   title: "Order success",
+                                //   children: [
+                                //     Center(
+                                //       child: SizedBox(
+                                //         height: 250.0,
+                                //         width: 250.0,
+                                //         child: QrImage(
+                                //           data: qrCodeString,
+                                //           version: QrVersions.auto,
+                                //           size: 200.0,
+                                //         ),
+                                //       ),
+                                //     ),
+                                //   ],
+                                // );
+                                // productBloc.add(DeleteCheckoutEvent());
+
+                                Navigator.pushReplacement(
+                                  context,
+                                  MaterialPageRoute(
+                                      builder: (context) => DetailPayment(
+                                            qrPayment: qrCodeString,
+                                            checkout: checkitem,
+                                          )),
+                                );
+                              }
                             },
                             child: const Text("Bayar"),
                           ),

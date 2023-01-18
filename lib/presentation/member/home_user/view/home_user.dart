@@ -6,9 +6,7 @@ import 'package:firebase_auth/firebase_auth.dart';
 // ignore_for_file: camel_case_types, prefer_typing_uninitialized_variables
 
 import 'package:flutter/material.dart';
-import 'package:lottie/lottie.dart';
 import 'package:testing_local_storage/data/model/checkout_model.dart';
-import 'package:testing_local_storage/data/model/transaction_model.dart';
 import 'package:testing_local_storage/data/model/user_model.dart';
 import 'package:testing_local_storage/data/provider/user_service.dart';
 import 'package:testing_local_storage/presentation/member/history/view/history_member.dart';
@@ -304,7 +302,7 @@ class _HomeUserState extends State<HomeUser> {
                       child: Column(
                         children: [
                           const SizedBox(
-                            height: 20.0,
+                            height: 70.0,
                           ),
                           Padding(
                             padding:
@@ -407,141 +405,141 @@ class _HomeUserState extends State<HomeUser> {
                           const SizedBox(
                             height: 30.0,
                           ),
-                          Padding(
-                            padding:
-                                const EdgeInsets.symmetric(horizontal: 20.0),
-                            child: Row(
-                              crossAxisAlignment: CrossAxisAlignment.start,
-                              children: [
-                                Text(
-                                  "Last Order",
-                                  style: GoogleFonts.montserrat(
-                                    textStyle:
-                                        Theme.of(context).textTheme.headline4,
-                                    fontSize: 14,
-                                    fontWeight: FontWeight.bold,
-                                  ),
-                                )
-                              ],
-                            ),
-                          ),
-                          const SizedBox(
-                            height: 20.0,
-                          ),
-                          Container(
-                            padding:
-                                const EdgeInsets.symmetric(horizontal: 20.0),
-                            height: 130.0,
-                            width: MediaQuery.of(context).size.width,
-                            child: StreamBuilder<QuerySnapshot>(
-                              stream: FirebaseFirestore.instance
-                                  .collection("transaction")
-                                  .where("id_costumer",
-                                      isEqualTo: FirebaseAuth
-                                          .instance.currentUser!.uid)
-                                  .snapshots(),
-                              builder: (context, snapshot) {
-                                if (snapshot.hasError) {
-                                  return const Text("Error");
-                                }
-                                if (snapshot.data == null) return Container();
-                                if (snapshot.data!.docs.isEmpty) {
-                                  return Center(
-                                    child: Container(
-                                      width: MediaQuery.of(context).size.width,
-                                      height:
-                                          MediaQuery.of(context).size.height /
-                                              2,
-                                      decoration: const BoxDecoration(
-                                        borderRadius: BorderRadius.all(
-                                          Radius.circular(
-                                            16.0,
-                                          ),
-                                        ),
-                                      ),
-                                      child: Column(
-                                        crossAxisAlignment:
-                                            CrossAxisAlignment.center,
-                                        mainAxisAlignment:
-                                            MainAxisAlignment.center,
-                                        children: [
-                                          SizedBox(
-                                              width: 110,
-                                              height: 110,
-                                              child: Lottie.asset(
-                                                  "assets/lottie/empty-data-bottol.json")),
-                                          Text(
-                                            "Belum ada data transaksi",
-                                            style: GoogleFonts.lato(
-                                              textStyle: Theme.of(context)
-                                                  .textTheme
-                                                  .headline4,
-                                              fontSize: 12,
-                                              fontWeight: FontWeight.bold,
-                                            ),
-                                          ),
-                                        ],
-                                      ),
-                                    ),
-                                  );
-                                }
-                                final data = snapshot.data!;
+                          // Padding(
+                          //   padding:
+                          //       const EdgeInsets.symmetric(horizontal: 20.0),
+                          //   child: Row(
+                          //     crossAxisAlignment: CrossAxisAlignment.start,
+                          //     children: [
+                          //       Text(
+                          //         "Last Order",
+                          //         style: GoogleFonts.montserrat(
+                          //           textStyle:
+                          //               Theme.of(context).textTheme.headline4,
+                          //           fontSize: 14,
+                          //           fontWeight: FontWeight.bold,
+                          //         ),
+                          //       )
+                          //     ],
+                          //   ),
+                          // ),
+                          // const SizedBox(
+                          //   height: 20.0,
+                          // ),
+                          // Container(
+                          //   padding:
+                          //       const EdgeInsets.symmetric(horizontal: 20.0),
+                          //   height: 130.0,
+                          //   width: MediaQuery.of(context).size.width,
+                          //   child: StreamBuilder<QuerySnapshot>(
+                          //     stream: FirebaseFirestore.instance
+                          //         .collection("transaction")
+                          //         .where("id_costumer",
+                          //             isEqualTo: FirebaseAuth
+                          //                 .instance.currentUser!.uid)
+                          //         .snapshots(),
+                          //     builder: (context, snapshot) {
+                          //       if (snapshot.hasError) {
+                          //         return const Text("Error");
+                          //       }
+                          //       if (snapshot.data == null) return Container();
+                          //       if (snapshot.data!.docs.isEmpty) {
+                          //         return Center(
+                          //           child: Container(
+                          //             width: MediaQuery.of(context).size.width,
+                          //             height:
+                          //                 MediaQuery.of(context).size.height /
+                          //                     2,
+                          //             decoration: const BoxDecoration(
+                          //               borderRadius: BorderRadius.all(
+                          //                 Radius.circular(
+                          //                   16.0,
+                          //                 ),
+                          //               ),
+                          //             ),
+                          //             child: Column(
+                          //               crossAxisAlignment:
+                          //                   CrossAxisAlignment.center,
+                          //               mainAxisAlignment:
+                          //                   MainAxisAlignment.center,
+                          //               children: [
+                          //                 SizedBox(
+                          //                     width: 110,
+                          //                     height: 110,
+                          //                     child: Lottie.asset(
+                          //                         "assets/lottie/empty-data-bottol.json")),
+                          //                 Text(
+                          //                   "Belum ada data transaksi",
+                          //                   style: GoogleFonts.lato(
+                          //                     textStyle: Theme.of(context)
+                          //                         .textTheme
+                          //                         .headline4,
+                          //                     fontSize: 12,
+                          //                     fontWeight: FontWeight.bold,
+                          //                   ),
+                          //                 ),
+                          //               ],
+                          //             ),
+                          //           ),
+                          //         );
+                          //       }
+                          //       final data = snapshot.data!;
 
-                                return ListView.builder(
-                                  itemCount: data.docs.length,
-                                  scrollDirection: Axis.horizontal,
-                                  itemBuilder: (context, index) {
-                                    Map<String, dynamic> item =
-                                        (data.docs[index].data()
-                                            as Map<String, dynamic>);
-                                    item["id"] = data.docs[index].id;
-                                    TransactionUser itemT =
-                                        TransactionUser.fromJson(item);
-                                    var menu = itemT.detail!.item!.first;
-                                    return SizedBox(
-                                      height: 130,
-                                      child: Column(
-                                        children: [
-                                          Container(
-                                            width: 100.0,
-                                            height: 100,
-                                            margin: const EdgeInsets.symmetric(
-                                                horizontal: 10.0),
-                                            decoration: BoxDecoration(
-                                              image: DecorationImage(
-                                                image: NetworkImage(
-                                                  "${menu!.imageUrl}",
-                                                ),
-                                                fit: BoxFit.cover,
-                                              ),
-                                              borderRadius:
-                                                  const BorderRadius.all(
-                                                Radius.circular(16.0),
-                                              ),
-                                              color: Colors.blue[400],
-                                            ),
-                                          ),
-                                          const SizedBox(
-                                            height: 10.0,
-                                          ),
-                                          Text(
-                                            "${menu.name}",
-                                            style: GoogleFonts.montserrat(
-                                              textStyle: Theme.of(context)
-                                                  .textTheme
-                                                  .headline4,
-                                              fontSize: 10,
-                                              fontWeight: FontWeight.bold,
-                                            ),
-                                          ),
-                                        ],
-                                      ),
-                                    );
-                                  },
-                                );
-                              },
-                            ),
-                          ),
+                          //       return ListView.builder(
+                          //         itemCount: data.docs.length,
+                          //         scrollDirection: Axis.horizontal,
+                          //         itemBuilder: (context, index) {
+                          //           Map<String, dynamic> item =
+                          //               (data.docs[index].data()
+                          //                   as Map<String, dynamic>);
+                          //           item["id"] = data.docs[index].id;
+                          //           TransactionUser itemT =
+                          //               TransactionUser.fromJson(item);
+                          //           var menu = itemT.detail!.item!.first;
+                          //           return SizedBox(
+                          //             height: 130,
+                          //             child: Column(
+                          //               children: [
+                          //                 Container(
+                          //                   width: 100.0,
+                          //                   height: 100,
+                          //                   margin: const EdgeInsets.symmetric(
+                          //                       horizontal: 10.0),
+                          //                   decoration: BoxDecoration(
+                          //                     image: DecorationImage(
+                          //                       image: NetworkImage(
+                          //                         "${menu!.imageUrl}",
+                          //                       ),
+                          //                       fit: BoxFit.cover,
+                          //                     ),
+                          //                     borderRadius:
+                          //                         const BorderRadius.all(
+                          //                       Radius.circular(16.0),
+                          //                     ),
+                          //                     color: Colors.blue[400],
+                          //                   ),
+                          //                 ),
+                          //                 const SizedBox(
+                          //                   height: 10.0,
+                          //                 ),
+                          //                 Text(
+                          //                   "${menu.name}",
+                          //                   style: GoogleFonts.montserrat(
+                          //                     textStyle: Theme.of(context)
+                          //                         .textTheme
+                          //                         .headline4,
+                          //                     fontSize: 10,
+                          //                     fontWeight: FontWeight.bold,
+                          //                   ),
+                          //                 ),
+                          //               ],
+                          //             ),
+                          //           );
+                          //         },
+                          //       );
+                          //     },
+                          //   ),
+                          // ),
                         ],
                       ),
                     ),

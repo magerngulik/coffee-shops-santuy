@@ -1,4 +1,5 @@
 import 'package:cached_network_image/cached_network_image.dart';
+import 'package:connectivity_wrapper/connectivity_wrapper.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:lottie/lottie.dart';
@@ -122,14 +123,6 @@ class _HomePageState extends State<HomePage> {
                     fontSize: 20.0,
                   ),
                 ),
-                Text(
-                  "magerngulik",
-                  style: TextStyle(
-                    fontSize: 20.0,
-                    color: Colors.black,
-                    fontWeight: FontWeight.bold,
-                  ),
-                ),
               ],
             ),
             leading: IconButton(
@@ -138,6 +131,60 @@ class _HomePageState extends State<HomePage> {
                 status.changeVisible();
               },
             ),
+            actions: [
+              IconButton(
+                onPressed: () async {
+                  if (await ConnectivityWrapper.instance.isConnected) {
+                    const snackBar = SnackBar(
+                      content: Text('Fitur ini belum tersedia!'),
+                    );
+                    ScaffoldMessenger.of(context).showSnackBar(snackBar);
+                  } else {
+                    await showDialog<void>(
+                      context: context,
+                      barrierDismissible: true,
+                      builder: (BuildContext context) {
+                        return AlertDialog(
+                            title: const Text('Peringatan'),
+                            content: SingleChildScrollView(
+                              child: ListBody(
+                                children: <Widget>[
+                                  SizedBox(
+                                      width: 250,
+                                      height: 250,
+                                      child: Lottie.asset(
+                                          "assets/lottie/no-internet.json")),
+                                  const Text(
+                                    'Hubungkan dengan koneksi internet untuk mengakses menu ini!',
+                                    textAlign: TextAlign.center,
+                                  ),
+                                ],
+                              ),
+                            ),
+                            actions: <Widget>[
+                              ElevatedButton(
+                                style: ElevatedButton.styleFrom(
+                                  backgroundColor: Colors.orange,
+                                ),
+                                onPressed: () {
+                                  Navigator.pop(context);
+                                },
+                                child: const Text("Oke"),
+                              ),
+                            ]);
+                      },
+                    );
+                  }
+                },
+                icon: const Icon(
+                  Icons.qr_code,
+                  size: 24.0,
+                ),
+              ),
+              const SizedBox(
+                width: 10.0,
+              ),
+            ],
           ),
           body: SingleChildScrollView(
             child: Column(

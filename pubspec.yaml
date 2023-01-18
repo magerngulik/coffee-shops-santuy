@@ -32,6 +32,7 @@ dependencies:
   another_flushbar: ^1.12.29
   cached_network_image: ^3.2.3
   cloud_firestore: ^4.3.1
+  connectivity_wrapper: ^1.1.1
   cupertino_icons: ^1.0.2
   dio: ^4.0.6
   equatable: null
@@ -47,6 +48,7 @@ dependencies:
   google_sign_in: ^5.4.2
   hydrated_bloc: null
   image_picker: ^0.8.6
+  intl: ^0.17.0
   json_annotation: null
   lottie: ^2.1.0
   material_design_icons_flutter: ^6.0.7096
@@ -54,6 +56,7 @@ dependencies:
   path: null
   path_provider: null
   qr_flutter: ^4.0.0
+  syncfusion_flutter_charts: ^20.4.43
 
 dev_dependencies:
   flutter_lints: ^2.0.0

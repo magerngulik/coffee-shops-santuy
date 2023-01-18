@@ -110,8 +110,8 @@ class _ProfileUserState extends State<ProfileUser> {
                     padding: const EdgeInsets.all(10.0),
                     decoration: const BoxDecoration(
                       image: DecorationImage(
-                        image: NetworkImage(
-                          "https://img.freepik.com/free-photo/top-view-roasted-coffee-beans-scattered-brown-paper-texture-background-with-copy-space_141793-7136.jpg?w=2000",
+                        image: AssetImage(
+                          "assets/image/bg-coffee.png",
                         ),
                         fit: BoxFit.cover,
                       ),
@@ -191,110 +191,110 @@ class _ProfileUserState extends State<ProfileUser> {
                 height: 20.0,
               ),
               //menu
-              Container(
-                height: MediaQuery.of(context).size.height * 0.2,
-                width: MediaQuery.of(context).size.width,
-                margin: const EdgeInsets.symmetric(horizontal: 20.0),
-                child: Column(
-                  crossAxisAlignment: CrossAxisAlignment.start,
-                  children: [
-                    Text(
-                      "Favorite Menu",
-                      style: GoogleFonts.lato(
-                        textStyle: Theme.of(context).textTheme.headline4,
-                        fontSize: 20,
-                        fontWeight: FontWeight.bold,
-                      ),
-                    ),
-                    const SizedBox(
-                      height: 10.0,
-                    ),
-                    SizedBox(
-                      height: 100.0,
-                      child: ListView.builder(
-                        itemCount: 3,
-                        scrollDirection: Axis.horizontal,
-                        itemBuilder: (context, index) {
-                          return Container(
-                            width: 100.0,
-                            height: 100,
-                            padding: const EdgeInsets.all(10.0),
-                            margin: const EdgeInsets.only(right: 10.0),
-                            decoration: BoxDecoration(
-                              color: Colors.blue[400],
-                              borderRadius: const BorderRadius.all(
-                                Radius.circular(16.0),
-                              ),
-                            ),
-                            child: Center(
-                              child: Text(
-                                "Sample Menu  ${index + 1}",
-                                textAlign: TextAlign.center,
-                                style: const TextStyle(
-                                  color: Colors.white,
-                                  fontSize: 11.0,
-                                ),
-                              ),
-                            ),
-                          );
-                        },
-                      ),
-                    ),
-                  ],
-                ),
-              ),
-              Container(
-                height: MediaQuery.of(context).size.height * 0.2,
-                width: MediaQuery.of(context).size.width,
-                margin: const EdgeInsets.symmetric(horizontal: 20.0),
-                child: Column(
-                  crossAxisAlignment: CrossAxisAlignment.start,
-                  children: [
-                    Text(
-                      "Last Order",
-                      style: GoogleFonts.lato(
-                        textStyle: Theme.of(context).textTheme.headline4,
-                        fontSize: 20,
-                        fontWeight: FontWeight.bold,
-                      ),
-                    ),
-                    const SizedBox(
-                      height: 10.0,
-                    ),
-                    SizedBox(
-                      height: 100.0,
-                      child: ListView.builder(
-                        itemCount: 3,
-                        scrollDirection: Axis.horizontal,
-                        itemBuilder: (context, index) {
-                          return Container(
-                            width: 100.0,
-                            height: 100,
-                            padding: const EdgeInsets.all(10.0),
-                            margin: const EdgeInsets.only(right: 10.0),
-                            decoration: BoxDecoration(
-                              color: Colors.blue[400],
-                              borderRadius: const BorderRadius.all(
-                                Radius.circular(16.0),
-                              ),
-                            ),
-                            child: Center(
-                              child: Text(
-                                "Last Order  ${index + 1}",
-                                textAlign: TextAlign.center,
-                                style: const TextStyle(
-                                  color: Colors.white,
-                                  fontSize: 11.0,
-                                ),
-                              ),
-                            ),
-                          );
-                        },
-                      ),
-                    ),
-                  ],
-                ),
-              ),
+              // Container(
+              //   height: MediaQuery.of(context).size.height * 0.2,
+              //   width: MediaQuery.of(context).size.width,
+              //   margin: const EdgeInsets.symmetric(horizontal: 20.0),
+              //   child: Column(
+              //     crossAxisAlignment: CrossAxisAlignment.start,
+              //     children: [
+              //       Text(
+              //         "Favorite Menu",
+              //         style: GoogleFonts.lato(
+              //           textStyle: Theme.of(context).textTheme.headline4,
+              //           fontSize: 20,
+              //           fontWeight: FontWeight.bold,
+              //         ),
+              //       ),
+              //       const SizedBox(
+              //         height: 10.0,
+              //       ),
+              //       SizedBox(
+              //         height: 100.0,
+              //         child: ListView.builder(
+              //           itemCount: 3,
+              //           scrollDirection: Axis.horizontal,
+              //           itemBuilder: (context, index) {
+              //             return Container(
+              //               width: 100.0,
+              //               height: 100,
+              //               padding: const EdgeInsets.all(10.0),
+              //               margin: const EdgeInsets.only(right: 10.0),
+              //               decoration: BoxDecoration(
+              //                 color: Colors.blue[400],
+              //                 borderRadius: const BorderRadius.all(
+              //                   Radius.circular(16.0),
+              //                 ),
+              //               ),
+              //               child: Center(
+              //                 child: Text(
+              //                   "Sample Menu  ${index + 1}",
+              //                   textAlign: TextAlign.center,
+              //                   style: const TextStyle(
+              //                     color: Colors.white,
+              //                     fontSize: 11.0,
+              //                   ),
+              //                 ),
+              //               ),
+              //             );
+              //           },
+              //         ),
+              //       ),
+              //     ],
+              //   ),
+              // ),
+              // Container(
+              //   height: MediaQuery.of(context).size.height * 0.2,
+              //   width: MediaQuery.of(context).size.width,
+              //   margin: const EdgeInsets.symmetric(horizontal: 20.0),
+              //   child: Column(
+              //     crossAxisAlignment: CrossAxisAlignment.start,
+              //     children: [
+              //       Text(
+              //         "Last Order",
+              //         style: GoogleFonts.lato(
+              //           textStyle: Theme.of(context).textTheme.headline4,
+              //           fontSize: 20,
+              //           fontWeight: FontWeight.bold,
+              //         ),
+              //       ),
+              //       const SizedBox(
+              //         height: 10.0,
+              //       ),
+              //       SizedBox(
+              //         height: 100.0,
+              //         child: ListView.builder(
+              //           itemCount: 3,
+              //           scrollDirection: Axis.horizontal,
+              //           itemBuilder: (context, index) {
+              //             return Container(
+              //               width: 100.0,
+              //               height: 100,
+              //               padding: const EdgeInsets.all(10.0),
+              //               margin: const EdgeInsets.only(right: 10.0),
+              //               decoration: BoxDecoration(
+              //                 color: Colors.blue[400],
+              //                 borderRadius: const BorderRadius.all(
+              //                   Radius.circular(16.0),
+              //                 ),
+              //               ),
+              //               child: Center(
+              //                 child: Text(
+              //                   "Last Order  ${index + 1}",
+              //                   textAlign: TextAlign.center,
+              //                   style: const TextStyle(
+              //                     color: Colors.white,
+              //                     fontSize: 11.0,
+              //                   ),
+              //                 ),
+              //               ),
+              //             );
+              //           },
+              //         ),
+              //       ),
+              //     ],
+              //   ),
+              // ),
             ],
           ),
         ),

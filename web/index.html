@@ -38,8 +38,34 @@
   </script>
   <!-- This script adds the flutter initialization JS code -->
   <script src="flutter.js" defer></script>
+  <meta name="google-signin-client_id" content="509248887373-25k2l53pukuq5dbj572rblvsuj23vasi.apps.googleusercontent.com">
+
 </head>
 <body>
+  <script src="https://www.gstatic.com/firebasejs/8.10.0/firebase-app.js"></script>
+  <script src="https://www.gstatic.com/firebasejs/8.10.0/firebase-auth.js"></script>
+  <script src="https://www.gstatic.com/firebasejs/8.10.0/firebase-firestore.js"></script>
+  <!-- <script src="https://www.gstatic.com/firebasejs/8.10.0/firebase-app.js"></script> -->
+
+    
+  <script>
+    // Your web app's Firebase configuration
+    var firebaseConfig = {
+      apiKey: "AIzaSyC357RylJ3ejuVgGbSxYu-awcaexM2Lktk",
+      authDomain: "food-apps-simager.firebaseapp.com",
+      projectId: "food-apps-simager",
+      storageBucket: "food-apps-simager.appspot.com",
+      messagingSenderId: "509248887373",
+      appId: "1:509248887373:web:00f9d9d490f7ff16e41a04"
+    };
+
+    // Initialize Firebase
+    firebase.initializeApp(firebaseConfig);
+    
+</script>
+
+
+
   <script>
     window.addEventListener('load', function(ev) {
       // Download main.dart.js
@@ -53,6 +79,11 @@
         return appRunner.runApp();
       });
     });
+    
   </script>
+ 
+
+  <script src="https://apis.google.com/js/platform.js" async defer></script>
+
 </body>
 </html>

@@ -167,44 +167,45 @@ class _CartProductState extends State<CartProduct> {
       bottomNavigationBar: BlocBuilder<ProductBloc, ProductState>(
         bloc: productBloc,
         builder: (context, state) {
-          return SizedBox(
-            width: 150,
-            height: 50,
-            child: ElevatedButton(
-              style: ElevatedButton.styleFrom(
-                backgroundColor: Colors.orange,
-                shape: RoundedRectangleBorder(
-                  borderRadius: BorderRadius.circular(12),
+          return Padding(
+            padding: const EdgeInsets.all(20.0),
+            child: SizedBox(
+              width: 150,
+              height: 50,
+              child: ElevatedButton(
+                style: ElevatedButton.styleFrom(
+                  backgroundColor: Colors.orange,
+                  shape: RoundedRectangleBorder(
+                    borderRadius: BorderRadius.circular(12),
+                  ),
                 ),
+                onPressed: () async {
+                  double totalPoint = (allTotal / 100) * 10;
+                  int total;
+                  int newTotal = 0;
+                  for (var i = 0; i < state.listCart.length; i++) {
+                    var item = state.listCart[i];
+                    total = item.qty! * int.parse(item.item!.price);
+                    newTotal = total + newTotal;
+                    itemChekout.add(Item(
+                        id: item.id,
+                        imageUrl: item.item!.image,
+                        name: item.item!.name,
+                        price: item.item!.price,
+                        qty: item.qty));
+                  }
+                  Navigator.push(
+                    context,
+                    MaterialPageRoute(
+                        builder: (context) => PaymentProduct(
+                              total: newTotal,
+                              chekout: itemChekout,
+                            )),
+                  );
+                  allTotal = 0;
+                },
+                child: const Text("Bayar"),
               ),
-              onPressed: () async {
-                double totalPoint = (allTotal / 100) * 10;
-                int total;
-                int newTotal = 0;
-                for (var i = 0; i < state.listCart.length; i++) {
-                  var item = state.listCart[i];
-                  total = item.qty! * int.parse(item.item!.price);
-                  newTotal = total + newTotal;
-                  itemChekout.add(Item(
-                      id: item.id,
-                      imageUrl: item.item!.image,
-                      name: item.item!.name,
-                      price: item.item!.price,
-                      qty: item.qty));
-                }
-
-                Navigator.push(
-                  context,
-                  MaterialPageRoute(
-                      builder: (context) => PaymentProduct(
-                            total: newTotal,
-                            chekout: itemChekout,
-                          )),
-                );
-
-                allTotal = 0;
-              },
-              child: const Text("Bayar"),
             ),
           );
         },

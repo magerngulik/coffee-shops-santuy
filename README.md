@@ -4,6 +4,7 @@ Merupakan aplikasi final project FIC batch 1.
 
 
 ## Dependencies
+Berikut ini merupakan depedencies yang di gunakan dalam project ini:
 ### State Management
 - flutter_bloc
 - hydrated_bloc 

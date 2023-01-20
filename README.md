@@ -1,7 +1,11 @@
 # Coffee Shops Santuy
 Merupakan aplikasi final project FIC batch 1.
-## Fitur
-
+## Fitur Coffee Santuy
+- Login by Google
+- Point Of Services 
+- Offline Services Menu
+- Sales Reports 
+- Payment Using Qr Code  
 
 ## Dependencies
 Berikut ini merupakan depedencies yang di gunakan dalam project ini:

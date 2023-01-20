@@ -4,6 +4,36 @@ Merupakan aplikasi final project FIC batch 1.
 
 
 ## Dependencies
+### State Management
+- flutter_bloc
+- hydrated_bloc 
+- equatable 
+### UI
+- flutter_native_splash
+- another_flushbar
+- flutter_screenutil
+- font_awesome_flutter
+- google_fonts
+- google_sign_in
+- intl
+- lottie
+- syncfusion_flutter_charts
+- material_design_icons_flutter
+### Firebase
+- cloud_firestore
+- firebase_auth
+- firebase_core
+- firebase_messaging
+### Http
+- cached_network_image
+- dio
+- connectivity_wrapper
+- image_picker
+- json_annotation: 
+- mobile_scanner
+- path 
+- path_provider 
+- qr_flutter
 
 ## Screenshot Aplikasi
 ![App Screenshot](https://github.com/magerngulik/coffee-shops-santuy/blob/main/assets/image/thumb.png)

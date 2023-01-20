@@ -4,9 +4,9 @@ Merupakan Slicing UI aplikasi dari figma ke Flutter
 - [Referensi Design Figma](https://ui8.net/rakibull-hassan-80d341/products/e---learning-app)
 ## Screenshot Aplikasi
 ---
-![App Screenshot](https://raw.githubusercontent.com/magerngulik/coffee-shops-santuy/main/assets/image/thumb.png?token=GHSAT0AAAAAABXO53QBZOXHG4CTHQYRIJSMY6KDFYA)
+![App Screenshot](https://raw.githubusercontent.com/magerngulik/coffee-shops-santuy/main/assets/image/thumb.png)
 ### Menu Management Vendor
-![App Screenshot](https://raw.githubusercontent.com/magerngulik/coffee-shops-santuy/main/assets/image/menu1.png?token=GHSAT0AAAAAABXO53QAARJ7HN4EIX6JVZK2Y6KDEIQ)
+![App Screenshot](https://raw.githubusercontent.com/magerngulik/coffee-shops-santuy/main/assets/image/menu1.png)
 ## Demo Video
 [Demo](https://youtu.be/D131Y45hrjA)
 ### References

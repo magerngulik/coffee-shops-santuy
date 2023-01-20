@@ -37,7 +37,7 @@ dependencies:
   cupertino_icons: ^1.0.2
   dio: ^4.0.6
   equatable: null
-  firebase_auth: ^4.2.4
+  firebase_auth: ^4.2.5
   firebase_core: ^2.4.1
   firebase_messaging: ^14.2.1
   flutter:

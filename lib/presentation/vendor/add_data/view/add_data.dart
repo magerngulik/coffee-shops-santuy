@@ -179,6 +179,40 @@ class _AddDataState extends State<AddData> {
       submenu: "Chocolate",
       category: "Drink",
     ),
+    Product(
+      id: "12",
+      name: "Bob’s Salad",
+      description:
+          "Buah dan sayuran segar mengandung banyak serat yang dapat membantu meningkatkan gerakan usus sehingga pencernaan pun menjadi lancar. Salad Buah dan Salad Sayur Segar dari Bob’s Salad bisa menjadi pilihan untuk buka puasa nanti. Pelengkapnya bisa dipilih mau yoghurt ataupun thousand island.",
+      price: "22500",
+      favorite: "false",
+      image: "https://i.ibb.co/hM7mf5s/upload.jpg",
+      submenu: "Salad",
+      category: "Food",
+    ),
+    Product(
+      id: "13",
+      name: "Creamy Yogurt Home made",
+      description:
+          "Homemade yogurt is a snap to make. All you really need is good quality milk, a few spoonfuls of your favorite plain yogurt to use as a starter culture, and some time to let it sit",
+      price: "30000",
+      favorite: "false",
+      image:
+          "https://i.ibb.co/1n5PbFv/18-YOGURT1-three-By-Two-Medium-At2-X.jpg",
+      submenu: "Yogurt",
+      category: "Food",
+    ),
+    Product(
+      id: "13",
+      name: "Croissant Pastry",
+      description:
+          "Pastry jenis ini terbuat dari tepung terigu dan mentega atau minyak, kemudian ditambahkan ragi. Croissant berbentuk bulan sabit dan mudah dikenali tampilannya.",
+      price: "30000",
+      favorite: "false",
+      image: "https://i.ibb.co/QXPhKPw/Bedanya-Pastry-dan-Bakery-detail-3.jpg",
+      submenu: "Bakery",
+      category: "Food",
+    ),
   ];
 
   doDummy(ProductBloc productB) {

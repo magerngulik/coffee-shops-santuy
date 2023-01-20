@@ -333,37 +333,49 @@ class _HomePageState extends State<HomePage> {
                     var item = foodMenu
                         .where((element) => element['category'] == "Food")
                         .toList()[index];
-                    return Container(
-                      decoration: BoxDecoration(
-                        color: Colors.grey[200],
-                        borderRadius: const BorderRadius.all(
-                          Radius.circular(24.0),
+                    return InkWell(
+                      onTap: () {
+                        productB.add(SelectProductEvent(item['name']!));
+                        Navigator.push(
+                          context,
+                          MaterialPageRoute(
+                              builder: (context) => SelectProduct(
+                                    category: item['name'],
+                                  )),
+                        );
+                      },
+                      child: Container(
+                        decoration: BoxDecoration(
+                          color: Colors.grey[200],
+                          borderRadius: const BorderRadius.all(
+                            Radius.circular(24.0),
+                          ),
                         ),
-                      ),
-                      child: Padding(
-                        padding: const EdgeInsets.symmetric(horizontal: 10.0),
-                        child: Row(
-                          mainAxisAlignment: MainAxisAlignment.start,
-                          children: [
-                            const CircleAvatar(
-                              backgroundColor: Colors.white,
-                              child: Icon(
-                                Icons.garage_outlined,
-                                color: Colors.black,
-                              ),
-                            ),
-                            const SizedBox(
-                              width: 10.0,
-                            ),
-                            Expanded(
-                              child: Text(
-                                "${item["name"]}",
-                                style: const TextStyle(
-                                  fontSize: 14.0,
+                        child: Padding(
+                          padding: const EdgeInsets.symmetric(horizontal: 10.0),
+                          child: Row(
+                            mainAxisAlignment: MainAxisAlignment.start,
+                            children: [
+                              const CircleAvatar(
+                                backgroundColor: Colors.white,
+                                child: Icon(
+                                  Icons.garage_outlined,
+                                  color: Colors.black,
                                 ),
                               ),
-                            ),
-                          ],
+                              const SizedBox(
+                                width: 10.0,
+                              ),
+                              Expanded(
+                                child: Text(
+                                  "${item["name"]}",
+                                  style: const TextStyle(
+                                    fontSize: 14.0,
+                                  ),
+                                ),
+                              ),
+                            ],
+                          ),
                         ),
                       ),
                     );

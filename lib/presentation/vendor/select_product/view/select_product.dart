@@ -1,6 +1,7 @@
 // ignore_for_file: public_member_api_docs, sort_constructors_first
 // ignore_for_file: camel_case_types, prefer_typing_uninitialized_variables
 
+import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
 import 'package:lottie/lottie.dart';
 import 'package:coffee_shops_santuy/bloc/product/product_bloc.dart';
@@ -87,16 +88,19 @@ class _SelectProductState extends State<SelectProduct> {
                   width: 300.0,
                   child: Row(
                     children: [
-                      Container(
+                      SizedBox(
                         width: 80.0,
                         height: 80.0,
-                        decoration: BoxDecoration(
-                          image: DecorationImage(
-                            image: NetworkImage(
-                              item.image,
-                            ),
-                            fit: BoxFit.cover,
+                        child: CachedNetworkImage(
+                          imageUrl: item.image,
+                          fit: BoxFit.cover,
+                          progressIndicatorBuilder:
+                              (context, url, downloadProgress) => Center(
+                            child: CircularProgressIndicator(
+                                value: downloadProgress.progress),
                           ),
+                          errorWidget: (context, url, error) =>
+                              const Icon(Icons.error),
                         ),
                       ),
                       Expanded(

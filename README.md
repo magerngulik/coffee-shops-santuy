@@ -44,6 +44,13 @@ Berikut ini merupakan depedencies yang di gunakan dalam project ini:
 ![App Screenshot](https://github.com/magerngulik/coffee-shops-santuy/blob/main/assets/image/thumb.png)
 ### Menu Management Vendor
 ![App Screenshot](https://github.com/magerngulik/coffee-shops-santuy/blob/main/assets/image/menu1.png)
+### Offline Services Menu
+![App Screenshot](https://github.com/magerngulik/coffee-shops-santuy/blob/main/assets/image/menu2.png)
+![App Screenshot](https://github.com/magerngulik/coffee-shops-santuy/blob/main/assets/image/menu3.png)
+### Report Menu
+![App Screenshot](https://github.com/magerngulik/coffee-shops-santuy/blob/main/assets/image/menu4.png)
+### Menu User
+![App Screenshot](https://github.com/magerngulik/coffee-shops-santuy/blob/main/assets/image/menu5.png)
 ## Demo Video
 [Demo Aplikasi](https://youtu.be/D131Y45hrjA)
 ### References

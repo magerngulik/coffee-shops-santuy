@@ -1,6 +1,6 @@
 import 'package:bloc/bloc.dart';
 import 'package:equatable/equatable.dart';
-import 'package:testing_local_storage/data/provider/auth_provider.dart';
+import 'package:coffee_shops_santuy/data/provider/auth_provider.dart';
 
 part 'auth_event.dart';
 part 'auth_state.dart';

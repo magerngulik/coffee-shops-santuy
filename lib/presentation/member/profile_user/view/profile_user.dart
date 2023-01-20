@@ -4,11 +4,11 @@ import 'package:cloud_firestore/cloud_firestore.dart';
 // ignore_for_file: camel_case_types, prefer_typing_uninitialized_variables
 
 import 'package:flutter/material.dart';
-import 'package:testing_local_storage/bloc/auth/auth_bloc.dart';
-import 'package:testing_local_storage/data/model/user_model.dart';
-import 'package:testing_local_storage/data/provider/user_service.dart';
-import 'package:testing_local_storage/presentation/auth/auth_user.dart';
-import 'package:testing_local_storage/presentation/member/edit_user/view/edit_user.dart';
+import 'package:coffee_shops_santuy/bloc/auth/auth_bloc.dart';
+import 'package:coffee_shops_santuy/data/model/user_model.dart';
+import 'package:coffee_shops_santuy/data/provider/user_service.dart';
+import 'package:coffee_shops_santuy/presentation/auth/auth_user.dart';
+import 'package:coffee_shops_santuy/presentation/member/edit_user/view/edit_user.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
 class ProfileUser extends StatefulWidget {

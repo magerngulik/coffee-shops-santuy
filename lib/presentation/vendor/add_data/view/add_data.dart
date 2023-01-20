@@ -3,12 +3,12 @@ import 'dart:math';
 import 'package:connectivity_wrapper/connectivity_wrapper.dart';
 import 'package:flutter/material.dart';
 import 'package:lottie/lottie.dart';
-import 'package:testing_local_storage/bloc/product/product_bloc.dart';
+import 'package:coffee_shops_santuy/bloc/product/product_bloc.dart';
 
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:testing_local_storage/data/model/product.dart';
-import 'package:testing_local_storage/presentation/vendor/add_data/widget/heading_text.dart';
-import 'package:testing_local_storage/util/shared/widget/image_picker.dart';
+import 'package:coffee_shops_santuy/data/model/product.dart';
+import 'package:coffee_shops_santuy/presentation/vendor/add_data/widget/heading_text.dart';
+import 'package:coffee_shops_santuy/util/shared/widget/image_picker.dart';
 
 class AddData extends StatefulWidget {
   Product? item;

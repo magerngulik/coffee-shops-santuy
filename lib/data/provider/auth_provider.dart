@@ -1,6 +1,6 @@
 import 'package:google_sign_in/google_sign_in.dart';
 import 'package:firebase_auth/firebase_auth.dart';
-import 'package:testing_local_storage/data/provider/user_service.dart';
+import 'package:coffee_shops_santuy/data/provider/user_service.dart';
 
 class AuthService {
   static User? currentUser;

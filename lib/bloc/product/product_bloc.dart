@@ -1,9 +1,9 @@
 import 'dart:async';
 import 'package:equatable/equatable.dart';
 import 'package:hydrated_bloc/hydrated_bloc.dart';
-import 'package:testing_local_storage/data/model/card_model.dart';
-import 'package:testing_local_storage/data/model/checkout_model.dart';
-import 'package:testing_local_storage/data/model/product.dart';
+import 'package:coffee_shops_santuy/data/model/card_model.dart';
+import 'package:coffee_shops_santuy/data/model/checkout_model.dart';
+import 'package:coffee_shops_santuy/data/model/product.dart';
 
 part 'product_event.dart';
 part 'product_state.dart';

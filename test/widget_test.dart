@@ -7,9 +7,9 @@
 
 import 'package:flutter/material.dart';
 import 'package:flutter_test/flutter_test.dart';
-import 'package:testing_local_storage/app.dart';
+import 'package:coffee_shops_santuy/app.dart';
 
-import 'package:testing_local_storage/main.dart';
+import 'package:coffee_shops_santuy/main.dart';
 
 void main() {
   testWidgets('Counter increments smoke test', (WidgetTester tester) async {

@@ -3,7 +3,8 @@ import 'package:dio/dio.dart';
 
 import 'package:flutter/material.dart';
 import 'package:image_picker/image_picker.dart';
-import 'package:testing_local_storage/util/shared/util/input.dart';
+
+import '../util/input.dart';
 
 class QimagePicker extends StatefulWidget {
   final String id;

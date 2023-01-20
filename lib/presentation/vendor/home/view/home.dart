@@ -2,13 +2,14 @@ import 'package:cached_network_image/cached_network_image.dart';
 import 'package:connectivity_wrapper/connectivity_wrapper.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:google_fonts/google_fonts.dart';
 import 'package:lottie/lottie.dart';
-import 'package:testing_local_storage/bloc/product/product_bloc.dart';
-import 'package:testing_local_storage/bloc/visible/visible_cubit.dart';
-import 'package:testing_local_storage/data/model/product.dart';
-import 'package:testing_local_storage/presentation/vendor/cart_product/view/cart_product.dart';
-import 'package:testing_local_storage/presentation/vendor/detail_product/view/detail_product.dart';
-import 'package:testing_local_storage/presentation/vendor/select_product/view/select_product.dart';
+import 'package:coffee_shops_santuy/bloc/product/product_bloc.dart';
+import 'package:coffee_shops_santuy/bloc/visible/visible_cubit.dart';
+import 'package:coffee_shops_santuy/data/model/product.dart';
+import 'package:coffee_shops_santuy/presentation/vendor/cart_product/view/cart_product.dart';
+import 'package:coffee_shops_santuy/presentation/vendor/detail_product/view/detail_product.dart';
+import 'package:coffee_shops_santuy/presentation/vendor/select_product/view/select_product.dart';
 
 class HomePage extends StatefulWidget {
   @override
@@ -116,11 +117,12 @@ class _HomePageState extends State<HomePage> {
             title: Column(
               crossAxisAlignment: CrossAxisAlignment.center,
               mainAxisAlignment: MainAxisAlignment.center,
-              children: const [
+              children: [
                 Text(
                   "Good Morning",
-                  style: TextStyle(
-                    fontSize: 20.0,
+                  style: GoogleFonts.montserrat(
+                    fontSize: 16,
+                    fontWeight: FontWeight.bold,
                   ),
                 ),
               ],
@@ -214,20 +216,13 @@ class _HomePageState extends State<HomePage> {
                   child: Row(
                     children: const [
                       Text(
-                        "Breverages",
+                        "Drinks",
                         style: TextStyle(
                           fontSize: 25.0,
                           fontWeight: FontWeight.bold,
                         ),
                       ),
                       Spacer(),
-                      Text(
-                        "View all",
-                        style: TextStyle(
-                          fontSize: 15.0,
-                          color: Colors.pink,
-                        ),
-                      ),
                     ],
                   ),
                 ),
@@ -315,13 +310,6 @@ class _HomePageState extends State<HomePage> {
                         ),
                       ),
                       Spacer(),
-                      Text(
-                        "View all",
-                        style: TextStyle(
-                          fontSize: 15.0,
-                          color: Colors.pink,
-                        ),
-                      ),
                     ],
                   ),
                 ),

@@ -1,10 +1,10 @@
 // ignore_for_file: camel_case_types, prefer_typing_uninitialized_variables
 
 import 'package:flutter/material.dart';
-import 'package:testing_local_storage/bloc/user/user_bloc.dart';
-import 'package:testing_local_storage/data/model/user_model.dart';
-import 'package:testing_local_storage/presentation/vendor/add_data/widget/heading_text.dart';
-import 'package:testing_local_storage/util/shared/widget/image_picker.dart';
+import 'package:coffee_shops_santuy/bloc/user/user_bloc.dart';
+import 'package:coffee_shops_santuy/data/model/user_model.dart';
+import 'package:coffee_shops_santuy/presentation/vendor/add_data/widget/heading_text.dart';
+import 'package:coffee_shops_santuy/util/shared/widget/image_picker.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
 class EditUser extends StatefulWidget {

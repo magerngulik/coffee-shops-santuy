@@ -4,11 +4,11 @@ import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:connectivity_wrapper/connectivity_wrapper.dart';
 import 'package:flutter/material.dart';
 import 'package:lottie/lottie.dart';
-import 'package:testing_local_storage/bloc/visible/visible_cubit.dart';
+import 'package:coffee_shops_santuy/bloc/visible/visible_cubit.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:testing_local_storage/data/model/transaction_model.dart';
-import 'package:testing_local_storage/data/model/user_model.dart';
-import 'package:testing_local_storage/util/shared/util/rupiahFormater.dart';
+import 'package:coffee_shops_santuy/data/model/transaction_model.dart';
+import 'package:coffee_shops_santuy/data/model/user_model.dart';
+import 'package:coffee_shops_santuy/util/shared/util/rupiahFormater.dart';
 
 class ReportProduct extends StatefulWidget {
   const ReportProduct({Key? key}) : super(key: key);

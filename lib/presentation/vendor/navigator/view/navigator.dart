@@ -2,11 +2,13 @@ import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter/material.dart';
-import 'package:testing_local_storage/bloc/auth/auth_bloc.dart';
-import 'package:testing_local_storage/bloc/visible/visible_cubit.dart';
-import 'package:testing_local_storage/presentation/auth/auth_user.dart';
-import 'package:testing_local_storage/presentation/vendor/home/view/home.dart';
-import 'package:testing_local_storage/presentation/vendor/menu_management/view/menu_management.dart';
+import 'package:coffee_shops_santuy/bloc/auth/auth_bloc.dart';
+import 'package:coffee_shops_santuy/bloc/visible/visible_cubit.dart';
+import 'package:coffee_shops_santuy/presentation/auth/auth_user.dart';
+import 'package:coffee_shops_santuy/presentation/vendor/home/view/home.dart';
+import 'package:coffee_shops_santuy/presentation/vendor/menu_management/view/menu_management.dart';
+
+import '../../testing/view/testing.dart';
 
 class NavigatorPage extends StatefulWidget {
   const NavigatorPage({super.key});
@@ -19,7 +21,7 @@ class _NavigatorPageState extends State<NavigatorPage> {
   List item = [
     {"id": 0, "icon": FontAwesomeIcons.bowlFood},
     {"id": 1, "icon": FontAwesomeIcons.bars},
-    // {"id": 2, "icon": FontAwesomeIcons.file},
+    {"id": 2, "icon": FontAwesomeIcons.file},
     // {"id": 3, "icon": FontAwesomeIcons.user},
   ];
 
@@ -143,16 +145,6 @@ class _NavigatorPageState extends State<NavigatorPage> {
                               );
                             }),
                           ),
-                          // IconButton(
-                          //   onPressed: () {
-                          //     status.changeVisible();
-                          //   },
-                          //   icon: FaIcon(
-                          //     FontAwesomeIcons.gear,
-                          //     size: 24.0.h,
-                          //     color: Colors.grey,
-                          //   ),
-                          // ),
                           const SizedBox(
                             height: 10.0,
                           ),
@@ -216,8 +208,7 @@ class _NavigatorPageState extends State<NavigatorPage> {
                         children: [
                           HomePage(),
                           const MenuManagement(),
-                          // const ReportProduct(),
-                          // const TestingPage()
+                          const ReportPenjualan()
                         ],
                       ),
                     ),

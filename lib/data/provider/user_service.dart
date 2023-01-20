@@ -1,6 +1,6 @@
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
-import 'package:testing_local_storage/data/model/user_model.dart';
+import 'package:coffee_shops_santuy/data/model/user_model.dart';
 
 DocumentReference get userCollection {
   return FirebaseFirestore.instance

@@ -6,10 +6,10 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:lottie/lottie.dart';
-import 'package:testing_local_storage/bloc/product/product_bloc.dart';
-import 'package:testing_local_storage/bloc/visible/visible_cubit.dart';
-import 'package:testing_local_storage/data/model/product.dart';
-import 'package:testing_local_storage/presentation/vendor/add_data/view/add_data.dart';
+import 'package:coffee_shops_santuy/bloc/product/product_bloc.dart';
+import 'package:coffee_shops_santuy/bloc/visible/visible_cubit.dart';
+import 'package:coffee_shops_santuy/data/model/product.dart';
+import 'package:coffee_shops_santuy/presentation/vendor/add_data/view/add_data.dart';
 
 class MenuManagement extends StatefulWidget {
   const MenuManagement({Key? key}) : super(key: key);
@@ -26,7 +26,13 @@ class _MenuManagementState extends State<MenuManagement> {
 
     return Scaffold(
       appBar: AppBar(
-        title: const Text("Menu Management"),
+        title: Text(
+          "Menu Management",
+          style: GoogleFonts.montserrat(
+            fontSize: 16,
+            fontWeight: FontWeight.bold,
+          ),
+        ),
         leading: IconButton(
           onPressed: () {
             status.changeVisible();

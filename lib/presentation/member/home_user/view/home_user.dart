@@ -6,13 +6,13 @@ import 'package:firebase_auth/firebase_auth.dart';
 // ignore_for_file: camel_case_types, prefer_typing_uninitialized_variables
 
 import 'package:flutter/material.dart';
-import 'package:testing_local_storage/data/model/checkout_model.dart';
-import 'package:testing_local_storage/data/model/user_model.dart';
-import 'package:testing_local_storage/data/provider/user_service.dart';
-import 'package:testing_local_storage/presentation/member/history/view/history_member.dart';
-import 'package:testing_local_storage/presentation/member/profile_user/view/profile_user.dart';
-import 'package:testing_local_storage/util/color/color_util.dart';
-import 'package:testing_local_storage/util/shared/widget/show_qrcode_scanner/show_qrcode_scanner.dart';
+import 'package:coffee_shops_santuy/data/model/checkout_model.dart';
+import 'package:coffee_shops_santuy/data/model/user_model.dart';
+import 'package:coffee_shops_santuy/data/provider/user_service.dart';
+import 'package:coffee_shops_santuy/presentation/member/history/view/history_member.dart';
+import 'package:coffee_shops_santuy/presentation/member/profile_user/view/profile_user.dart';
+import 'package:coffee_shops_santuy/util/color/color_util.dart';
+import 'package:coffee_shops_santuy/util/shared/widget/show_qrcode_scanner/show_qrcode_scanner.dart';
 
 class HomeUser extends StatefulWidget {
   const HomeUser({Key? key}) : super(key: key);

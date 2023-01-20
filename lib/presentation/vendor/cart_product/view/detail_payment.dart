@@ -3,8 +3,8 @@
 import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
 import 'package:qr_flutter/qr_flutter.dart';
-import 'package:testing_local_storage/bloc/product/product_bloc.dart';
-import 'package:testing_local_storage/data/model/checkout_model.dart';
+import 'package:coffee_shops_santuy/bloc/product/product_bloc.dart';
+import 'package:coffee_shops_santuy/data/model/checkout_model.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
 class DetailPayment extends StatefulWidget {

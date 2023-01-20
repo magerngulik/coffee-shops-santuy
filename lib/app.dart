@@ -1,14 +1,15 @@
+import 'package:coffee_shops_santuy/bloc/product/product_bloc.dart';
+import 'package:coffee_shops_santuy/presentation/auth/auth_user.dart';
 import 'package:connectivity_wrapper/connectivity_wrapper.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:google_fonts/google_fonts.dart';
-import 'package:testing_local_storage/bloc/auth/auth_bloc.dart';
-import 'package:testing_local_storage/bloc/product/product_bloc.dart';
-import 'package:testing_local_storage/bloc/random_number/random_number_bloc.dart';
-import 'package:testing_local_storage/bloc/user/user_bloc.dart';
-import 'package:testing_local_storage/bloc/visible/visible_cubit.dart';
-import 'package:testing_local_storage/presentation/auth/auth_user.dart';
+
+import 'bloc/auth/auth_bloc.dart';
+import 'bloc/random_number/random_number_bloc.dart';
+import 'bloc/user/user_bloc.dart';
+import 'bloc/visible/visible_cubit.dart';
 
 class App extends StatelessWidget {
   const App({super.key});

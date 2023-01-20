@@ -6,9 +6,9 @@ import 'package:google_fonts/google_fonts.dart';
 // ignore_for_file: camel_case_types, prefer_typing_uninitialized_variables
 
 import 'package:flutter/material.dart';
-import 'package:testing_local_storage/bloc/product/product_bloc.dart';
-import 'package:testing_local_storage/data/model/card_model.dart';
-import 'package:testing_local_storage/data/model/product.dart';
+import 'package:coffee_shops_santuy/bloc/product/product_bloc.dart';
+import 'package:coffee_shops_santuy/data/model/card_model.dart';
+import 'package:coffee_shops_santuy/data/model/product.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
 class DetailProduct extends StatefulWidget {

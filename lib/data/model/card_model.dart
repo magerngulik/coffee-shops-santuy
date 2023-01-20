@@ -1,7 +1,7 @@
 // ignore_for_file: public_member_api_docs, sort_constructors_first
 import 'dart:convert';
 
-import 'package:testing_local_storage/data/model/product.dart';
+import 'package:coffee_shops_santuy/data/model/product.dart';
 
 class CartModel {
   String? id;

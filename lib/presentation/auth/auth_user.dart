@@ -5,10 +5,10 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:lottie/lottie.dart';
-import 'package:testing_local_storage/bloc/auth/auth_bloc.dart';
-import 'package:testing_local_storage/presentation/member/home_user/view/home_user.dart';
-import 'package:testing_local_storage/presentation/vendor/navigator/view/navigator.dart';
-import 'package:testing_local_storage/util/color/color_util.dart';
+import 'package:coffee_shops_santuy/bloc/auth/auth_bloc.dart';
+import 'package:coffee_shops_santuy/presentation/member/home_user/view/home_user.dart';
+import 'package:coffee_shops_santuy/presentation/vendor/navigator/view/navigator.dart';
+import 'package:coffee_shops_santuy/util/color/color_util.dart';
 
 class AuthUserFirebase extends StatefulWidget {
   const AuthUserFirebase({Key? key}) : super(key: key);

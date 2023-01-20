@@ -4,11 +4,11 @@ import 'package:google_fonts/google_fonts.dart';
 
 import 'package:flutter/material.dart';
 import 'package:lottie/lottie.dart';
-import 'package:testing_local_storage/bloc/product/product_bloc.dart';
+import 'package:coffee_shops_santuy/bloc/product/product_bloc.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:testing_local_storage/data/model/card_model.dart';
-import 'package:testing_local_storage/data/model/checkout_model.dart';
-import 'package:testing_local_storage/presentation/vendor/cart_product/view/payment_product.dart';
+import 'package:coffee_shops_santuy/data/model/card_model.dart';
+import 'package:coffee_shops_santuy/data/model/checkout_model.dart';
+import 'package:coffee_shops_santuy/presentation/vendor/cart_product/view/payment_product.dart';
 
 class CartProduct extends StatefulWidget {
   const CartProduct({Key? key}) : super(key: key);

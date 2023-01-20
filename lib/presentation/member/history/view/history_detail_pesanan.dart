@@ -1,7 +1,7 @@
 // ignore_for_file: camel_case_types, prefer_typing_uninitialized_variables
 
 import 'package:flutter/material.dart';
-import 'package:testing_local_storage/data/model/transaction_model.dart';
+import 'package:coffee_shops_santuy/data/model/transaction_model.dart';
 
 class HistoryDetailPesanan extends StatefulWidget {
   TransactionUser? item;

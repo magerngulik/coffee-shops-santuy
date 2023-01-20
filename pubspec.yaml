@@ -1,5 +1,5 @@
-name: testing_local_storage
-description: A new Flutter project.
+name: coffee_shops_santuy
+description: Final Project FIC batch 1
 
 # The following line prevents the package from being accidentally published to
 # pub.dev using `flutter pub publish`. This is preferred for private packages.
@@ -29,6 +29,7 @@ environment:
 # the latest version available on pub.dev. To see which dependencies have newer
 # versions available, run `flutter pub outdated`.
 dependencies:
+  flutter_native_splash: ^2.2.16
   another_flushbar: ^1.12.29
   cached_network_image: ^3.2.3
   cloud_firestore: ^4.3.1
@@ -62,6 +63,21 @@ dev_dependencies:
   flutter_lints: ^2.0.0
   flutter_test:
     sdk: flutter
+  flutter_launcher_icons: ^0.11.0
+
+flutter_icons:
+  android: true
+  ios: true
+  image_path: 'assets/image/coffee_glass.png'
+
+flutter_native_splash:
+  color: '#ffffff'
+  image: assets/image/icon_splash.png
+  branding: assets/image/branding.png
+
+  android_12:
+    image: assets/image/icon_splash.png
+    icon_background_color: '#ffffff'
 
 # For information on the generic Dart part of this file, see the
 # following page: https://dart.dev/tools/pub/pubspec
